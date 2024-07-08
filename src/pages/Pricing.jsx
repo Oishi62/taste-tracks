@@ -21,7 +21,7 @@ const Pricing = () => {
                   onClick={() => setIsAnnual(true)}
                   aria-pressed={isAnnual}
                 >
-                  Yearl <span className={isAnnual ? 'text-white' : 'text-slate-400 dark:text-slate-500'}>-20%</span>
+                  Yearly <span className={isAnnual ? 'text-white' : 'text-slate-400 dark:text-slate-500'}>-20%</span>
                 </button>
                 <button 
                   className={`relative flex-1 text-sm font-medium h-8 rounded-full focus-visible:outline-none focus-visible:ring focus-visible:ring-indigo-300 dark:focus-visible:ring-slate-600 transition-colors duration-150 ease-in-out ${isAnnual ? 'text-slate-500 dark:text-slate-400' : 'text-white'}`} 
