@@ -28,7 +28,7 @@ const About = () => {
                                         </svg>
                                         <h3 className="my-3 text-xl sm:text-3xl font-semibold">Gate Pass Generation</h3>
                                         <div className="space-y-1 leadi">
-                                            <p>Effortlessly generate secure gate</p>
+                                            <p>Effortlessly generate secure</p>
                                             <p>passes through our user-friendly</p>
                                             <p>system, ensuring quick and hassle-</p>
                                             <p>free access to the college campus.</p>
