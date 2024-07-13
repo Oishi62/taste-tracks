@@ -1,6 +1,13 @@
 import React from 'react';
-
+import { useNavigate } from 'react-router-dom';
 const Login = () => {
+
+  const navigate = useNavigate();
+
+  const navigateToOtherPage = () => {
+    navigate('/home_reviews');
+  };
+
   return (
     <>
       <div className="flex flex-wrap min-h-screen w-full content-center justify-center bg-gray-200 py-10">
@@ -32,7 +39,7 @@ const Login = () => {
                 
 
                 <div className="mb-3">
-                  <button className="mb-1.5 block w-full text-center text-white bg-black  px-2 py-1.5 rounded-md">Sign in</button>
+                  <button className="mb-1.5 block w-full text-center text-white bg-black  px-2 py-1.5 rounded-md" onClick={navigateToOtherPage}>Sign in</button>
                   <button className="flex flex-wrap justify-center w-full border border-gray-300 hover:border-gray-500 px-2 py-1.5 rounded-md">
                     <img className="w-5 mr-2" src="https://lh3.googleusercontent.com/COxitqgJr1sJnIDe8-jiKhxDx1FrYbtRHKJ9z_hELisAlapwE9LUPh6fcXIfb5vwpbMl4xl9H9TRFPc5NOO8Sb3VSgIBrfRYvW6cUA" alt="Google logo" />
                     Sign in with Google

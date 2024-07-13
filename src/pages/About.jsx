@@ -1,9 +1,9 @@
 import React from 'react'
-
+import Navbar from '../components/Navbar'
 const About = () => {
   return (
     <div>
-
+            <Navbar/>
             <div className="min-h-screen min-w-full bg-gray-100 flex flex-col justify-center p-5 sm:p-10">
                 <div className="relative w-full max-w-full lg:max-w-6xl xl:max-w-screen-2xl mx-auto">
 

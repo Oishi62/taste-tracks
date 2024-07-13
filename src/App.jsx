@@ -9,6 +9,7 @@ import Signup from './pages/Signup'
 import Pricing from './pages/Pricing'
 import PremiumSignup from './pages/PremiumSignup'
 import About from './pages/About'
+import Home_Reviews from './pages/Home_Reviews'
 function App() {
   const [count, setCount] = useState(0)
 
@@ -22,6 +23,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/premiumsignup" element={<PremiumSignup />} />
+          <Route path="/home_reviews" element={<Home_Reviews />} />
           <Route path="/about" element={<About />} />
 
           {/* <Route path="blogs" element={<Blogs />} /> */}
