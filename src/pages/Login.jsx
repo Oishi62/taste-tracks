@@ -49,7 +49,7 @@ const Login = () => {
 
               <div className="text-center">
                 <span className="text-xs text-gray-400 font-semibold">Don't have an account? </span>
-                <a href="/signup" className="text-xs font-semibold text-black">Sign up</a>
+                <a href="/pricing" className="text-xs font-semibold text-black">Sign up</a>
               </div>
             </div>
           </div>

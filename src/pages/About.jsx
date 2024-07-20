@@ -17,35 +17,29 @@ const About = () => {
 
                                 <div className="container mx-auto p-4 my-6 space-y-2 text-center">
                                     {/* <a href="/adminsignin"><span className="px-24 sm:px-32 block text-cyan-600">Admin Sign In</span></a> */}
-                                    <h2 className="text-3xl sm:text-5xl font-bold mt-7">Revolutionizing Campus Security and Efficiency
+                                    <h2 className="text-3xl sm:text-5xl font-bold mt-7">Revolutionizing Restaurant Transparency and Engagement
                                     </h2>
-                                    <p className="text-gray-600">Centralized Tracking, GPS Integration, and Seamless Navigation for a Safer and More Streamlined Visitor Experience.</p>
+                                    <br />
+                                    <p className="text-gray-600">Centralized Reviews, Worker Insights, and Seamless Feedback for a Fairer and More Informed Dining Experience.</p>
                                 </div>
                                 <div className="container mx-auto grid justify-center gap-4 sm:grid-cols-2 lg:grid-cols-3">
                                     <div className="flex flex-col items-center p-4">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-8 h-8 text-gray-600">
                                             <path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd"></path>
                                         </svg>
-                                        <h3 className="my-3 text-xl sm:text-3xl font-semibold">Gate Pass Generation</h3>
+                                        <h3 className="my-3 text-xl sm:text-3xl font-semibold text-center">Detailed Reviews</h3>
                                         <div className="space-y-1 leadi">
-                                            <p>Effortlessly generate secure</p>
-                                            <p>passes through our user-friendly</p>
-                                            <p>system, ensuring quick and hassle-</p>
-                                            <p>free access to the college campus.</p>
+                                            <p className='text-center'>Effortlessly access detailed reviews of restaurants, including food quality, service, and ambiance, ensuring you make informed dining decisions.</p>
+                                            
                                         </div>
                                     </div>
                                     <div className="flex flex-col items-center p-4">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-8 h-8 text-gray-600">
                                             <path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd"></path>
                                         </svg>
-                                        <h3 className="my-3 text-xl sm:text-3xl font-semibold">Navigation Assistance</h3>
+                                        <h3 className="my-3 text-xl sm:text-3xl font-semibold text-center">Worker Insights</h3>
                                         <div className="space-y-1 leadi">
-                                            <p>Navigate the campus with ease using</p>
-                                            <p>our navigation feature. Whether you're</p>
-                                            <p>a visitor or a regular, our system</p>
-                                            <p>ensures seamless assistance, for a</p>
-                                            <p>stress-free and efficient experience</p>
-                                            <p>within the premises.</p>
+                                            <p className='text-center'>Gain valuable insights into the workplace conditions of restaurants, shared anonymously by workers, to promote transparency and fair practices.</p>
                                         </div>
 
                                     </div>
@@ -53,12 +47,11 @@ const About = () => {
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-8 h-8 text-gray-600">
                                             <path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd"></path>
                                         </svg>
-                                        <h3 className="my-3 text-xl sm:text-3xl font-semibold">Emergency Preparedness</h3>
+                                        <h3 className="my-3 text-xl sm:text-3xl font-semibold text-center">Owner Engagement
+
+</h3>
                                         <div className="space-y-1 leadi">
-                                            <p>Stay informed and secure during</p>
-                                            <p>unforeseen events with real-time</p>
-                                            <p>alerts, evacuation routes, and vital</p>
-                                            <p>information readily available.</p>
+                                            <p className='text-center'>Enable restaurant owners to manage their profiles, respond to reviews, and access analytics to improve customer and worker satisfaction.</p>
 
 
                                         </div>

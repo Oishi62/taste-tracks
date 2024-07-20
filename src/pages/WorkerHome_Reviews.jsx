@@ -3,7 +3,7 @@ import Navbar from '../components/Navbar'
 import PostReview from '../components/PostReview'
 import LeftLayout from '../components/LeftLayout'
 import RightLayout from '../components/RightLayout'
-const Home_Reviews = () => {
+const WorkerHome_Reviews = () => {
   return (
     <>
     <Navbar/>
@@ -17,4 +17,4 @@ const Home_Reviews = () => {
   )
 }
 
-export default Home_Reviews
+export default WorkerHome_Reviews

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 const Navbar = () => {
   return (
 <>
@@ -74,10 +75,14 @@ const Navbar = () => {
     </nav> */}
     <div className="w-full flex">
   <nav className="hidden lg:flex lg:space-x-8 lg:py-2 lg:justify-end w-full" aria-label="Global">
-    <a href="#" className="text-black hover:scale-110 inline-flex items-center rounded-md py-2 px-3 text-sm font-medium" aria-current="page">Home</a>
+    {/* <a href="#" className="text-black hover:scale-110 inline-flex items-center rounded-md py-2 px-3 text-sm font-medium" aria-current="page">Home</a>
     <a href="#" className="hover:scale-110 inline-flex items-center rounded-md py-2 px-3 text-sm font-medium">My Profile</a>
     <a href="#" className="text-black hover:scale-110 inline-flex items-center rounded-md py-2 px-3 text-sm font-medium">About</a>
-    <a href="#" className="text-black hover:scale-110 inline-flex items-center rounded-md py-2 px-3 text-sm font-medium">Sign Out</a>
+    <a href="#" className="text-black hover:scale-110 inline-flex items-center rounded-md py-2 px-3 text-sm font-medium">Sign Out</a> */}
+    <Link to="/home_reviews" className="text-black hover:scale-110 inline-flex items-center rounded-md py-2 px-3 text-sm font-medium" aria-current="page">Home</Link>
+      <Link to="/myprofile" className="hover:scale-110 inline-flex items-center rounded-md py-2 px-3 text-sm font-medium">My Profile</Link>
+      <Link to="/about" className="text-black hover:scale-110 inline-flex items-center rounded-md py-2 px-3 text-sm font-medium">About</Link>
+      <Link to="/" className="text-black hover:scale-110 inline-flex items-center rounded-md py-2 px-3 text-sm font-medium">Sign Out</Link>
   </nav>
 </div>
 
@@ -85,10 +90,14 @@ const Navbar = () => {
 
   <nav className="lg:hidden" aria-label="Global" id="mobile-menu">
     <div className="space-y-1 px-2 pb-3 pt-2">
-      <a href="#" className="bg-gray-900 text-white block rounded-md py-2 px-3 text-base font-medium" aria-current="page">Home</a>
+      {/* <a href="#" className="bg-gray-900 text-white block rounded-md py-2 px-3 text-base font-medium" aria-current="page">Home</a>
       <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md py-2 px-3 text-base font-medium">My Profile</a>
       <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md py-2 px-3 text-base font-medium">About</a>
-      <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md py-2 px-3 text-base font-medium">Sign Out</a>
+      <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md py-2 px-3 text-base font-medium">Sign Out</a> */}
+       <Link to="/" className="text-black hover:scale-110 inline-flex items-center rounded-md py-2 px-3 text-sm font-medium" aria-current="page">Home</Link>
+      <Link to="/myprofile" className="hover:scale-110 inline-flex items-center rounded-md py-2 px-3 text-sm font-medium">My Profile</Link>
+      <Link to="/about" className="text-black hover:scale-110 inline-flex items-center rounded-md py-2 px-3 text-sm font-medium">About</Link>
+      <Link to="/signout" className="text-black hover:scale-110 inline-flex items-center rounded-md py-2 px-3 text-sm font-medium">Sign Out</Link>
     </div>
     <div className="border-t border-gray-700 pb-3 pt-4">
       <div className="flex items-center px-4">
@@ -107,11 +116,11 @@ const Navbar = () => {
           </svg>
         </button>
       </div>
-      <div className="mt-3 space-y-1 px-2">
+      {/* <div className="mt-3 space-y-1 px-2">
         <a href="#" className="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Your Profile</a>
         <a href="#" className="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Settings</a>
         <a href="#" className="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Sign out</a>
-      </div>
+      </div> */}
     </div>
   </nav>
 </header>
