@@ -13,6 +13,7 @@ import Home_Reviews from './pages/Home_Reviews'
 import MyProfile from './pages/MyProfile'
 import WorkerSignUp from './pages/WorkerSignUp'
 import WorkerHome_Reviews from './pages/WorkerHome_Reviews'
+import OwnerHomePage from './pages/OwnerHomePage'
 function App() {
   const [count, setCount] = useState(0)
 
@@ -29,6 +30,7 @@ function App() {
           <Route path="/home_reviews" element={<Home_Reviews />} />
           <Route path="/about" element={<About />} />
           <Route path="/myprofile" element={<MyProfile />} />
+          <Route path="/ownerhomepage" element={<OwnerHomePage />} />
           <Route path="/workerhome_reviews" element={<WorkerHome_Reviews />} />
           <Route path="/workersignup" element={<WorkerSignUp />} />
 
