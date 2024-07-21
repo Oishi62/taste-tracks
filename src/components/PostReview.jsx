@@ -1,9 +1,10 @@
-import React from 'react'
+import React,{useState} from 'react'
+import ReviewModal from './ReviewModal'
 
 const PostReview = () => {
+    const [showModal, setShowModal] = useState(false);
   return (
     <>
-
 
 <div className="max-w-lg mx-auto mt-4">
     <div className="bg-gray-100 shadow-lg rounded-lg p-2 flex items-center space-x-3">
@@ -15,10 +16,10 @@ const PostReview = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M4 15h16" />
             </svg>
         </div>
-        <div className="text-gray-600 text-sm flex-1">Write fearlessly..</div>
+        <button className="text-gray-600 text-sm flex-1" onClick={() => setShowModal(true)}>Write fearlessly..</button>
     </div>
 </div>
-
+<ReviewModal isVisible={showModal} onClose={() => setShowModal(false)} />
     </>
   )
 }

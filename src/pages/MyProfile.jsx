@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
+import PasswordReset from '../components/PasswordReset';
 
 const MyProfile = () => {
+
+  const [showModal, setShowModal] = useState(false);
+
   return (
     <>
       <Navbar />
@@ -9,7 +13,7 @@ const MyProfile = () => {
         <section className="flex flex-col md:flex-row p-6">
           <div className="md:w-1/4 bg-gray-100 p-4 shadow rounded-lg">
             <h2 className="text-xl font-bold text-charcoal mb-6">Create Your Profile</h2>
-            <button className="w-full bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg mb-4">Password Reset</button>
+            <button className="w-full bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg mb-4" onClick={() => setShowModal(true)}>Password Reset</button>
           </div>
           <div className="md:w-3/4 md:pl-6">
             <form className="bg-white p-6 shadow rounded-lg">
@@ -83,6 +87,7 @@ const MyProfile = () => {
           </div>
         </section>
       </main>
+      <PasswordReset isVisible={showModal} onClose={() => setShowModal(false)} />
     </>
   );
 }
