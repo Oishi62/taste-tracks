@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 const ReviewModal = ({ isVisible, onClose }) => {
     const [title, setTitle] = useState('');
     const [review, setReview] = useState('');
+    const [images, setImages] = useState([]);
 
     if (!isVisible) return null;
 
@@ -13,8 +14,12 @@ const ReviewModal = ({ isVisible, onClose }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         // Handle form submission logic here
-        console.log({ title, review });
+        console.log({ title, review, images });
         onClose();  // Close the modal after submission
+    };
+
+    const handleImageUpload = (e) => {
+        setImages([...e.target.files]);
     };
 
     return (
@@ -52,6 +57,18 @@ const ReviewModal = ({ isVisible, onClose }) => {
                                 value={review}
                                 onChange={(e) => setReview(e.target.value)}
                                 required
+                            />
+                        </div>
+                        <div className="mb-4">
+                            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="images">
+                                Upload Images
+                            </label>
+                            <input
+                                type="file"
+                                id="images"
+                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                multiple
+                                onChange={handleImageUpload}
                             />
                         </div>
                         <div className="flex items-center justify-between">
