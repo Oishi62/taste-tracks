@@ -1,6 +1,8 @@
 import React from 'react'
 
 const OwnerHomePage = () => {
+
+
   return (
     <>
 <header className="text-gray-600 body-font">
@@ -14,6 +16,7 @@ const OwnerHomePage = () => {
       <a className="mr-5 hover:text-gray-900 text-black cursor-pointer hover:scale-110" href="#features">Features</a>
       <a className="mr-5 hover:text-gray-900 text-black cursor-pointer hover:scale-110" href="#companies">Companies</a>
       <a className="mr-5 hover:text-gray-900 text-black cursor-pointer hover:scale-110" href="#claim">Claim</a>
+      <a className="ml-80 hover:text-gray-900 text-black cursor-pointer hover:scale-110" href="/login">Sign Out</a>
     </nav>
     
   </div>
