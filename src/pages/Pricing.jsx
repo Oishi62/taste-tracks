@@ -5,14 +5,14 @@ const Pricing = () => {
 
   return (
     <div className="relative font-inter antialiased ">
-      <main className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-gray-300">
+      <main className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-green-200 ">
         <div className="w-full max-w-6xl mx-auto px-4 md:px-6 py-24 ">
 
           {/* Pricing table component */}
           <div>
             {/* Pricing toggle */}
             <div className="flex justify-center max-w-[14rem] m-auto mb-8 lg:mb-16">
-              <div className="relative flex w-full p-1 bg-white dark:bg-slate-900 rounded-full">
+              <div className="relative flex w-full p-1 bg-green-500 dark:bg-slate-900 rounded-full">
                 <span className="absolute inset-0 m-1 pointer-events-none" aria-hidden="true">
                   <span className={`absolute inset-0 w-1/2 bg-black rounded-full shadow-sm shadow-indigo-950/10 transform transition-transform duration-150 ease-in-out ${isAnnual ? 'translate-x-0' : 'translate-x-full'}`}></span>
                 </span>
@@ -21,7 +21,7 @@ const Pricing = () => {
                   onClick={() => setIsAnnual(true)}
                   aria-pressed={isAnnual}
                 >
-                  Yearly <span className={isAnnual ? 'text-white' : 'text-slate-400 dark:text-slate-500'}>-20%</span>
+                  Yearly <span className={isAnnual ? 'text-white' : 'text-green-900'}>-20%</span>
                 </button>
                 <button 
                   className={`relative flex-1 text-sm font-medium h-8 rounded-full focus-visible:outline-none focus-visible:ring focus-visible:ring-indigo-300 dark:focus-visible:ring-slate-600 transition-colors duration-150 ease-in-out ${isAnnual ? 'text-slate-500 dark:text-slate-400' : 'text-white'}`} 
@@ -36,9 +36,9 @@ const Pricing = () => {
             <div className="max-w-sm mx-auto grid gap-6 lg:grid-cols-3 items-start lg:max-w-none">
 
               {/* Pricing tab 1 */}
-              <div className="h-full">                                
-                <div className="relative flex flex-col h-full p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-900 shadow shadow-slate-950/5">
-                  <div className="mb-5">
+              <div className="h-full transform transition-transform duration-200 hover:scale-105">                                
+              <div className="relative flex flex-col h-full p-6 rounded-2xl bg-[rgba(255,255,255,0.75)] dark:bg-[rgba(15,23,42,0.75)] border border-slate-200 dark:border-slate-900 shadow shadow-slate-950/5">
+              <div className="mb-5">
                     <div className="text-slate-900 dark:text-slate-200 font-semibold mb-1">Customer</div>
                     <div className="inline-flex items-baseline mb-2">
                       <span className="text-slate-900 dark:text-slate-200 font-bold text-3xl">$</span>
@@ -46,7 +46,7 @@ const Pricing = () => {
                       <span className="text-slate-500 font-medium">/mo</span>
                     </div>
                     <div className="text-sm text-slate-500 mb-5">Gain access to detailed, unbiased reviews of food quality, service, and ambiance.</div>
-                    <a className="w-full inline-flex justify-center whitespace-nowrap rounded-lg bg-black px-3.5 py-2.5 text-sm font-medium text-white shadow-sm shadow-indigo-950/10 hover:bg-indigo-600 focus-visible:outline-none focus-visible:ring focus-visible:ring-indigo-300 dark:focus-visible:ring-slate-600 transition-colors duration-150" href="/signup">
+                    <a className="w-full inline-flex justify-center whitespace-nowrap rounded-lg bg-black px-3.5 py-2.5 text-sm font-medium text-white shadow-sm shadow-indigo-950/10 hover:bg-green-600 focus-visible:outline-none focus-visible:ring focus-visible:ring-indigo-300 dark:focus-visible:ring-slate-600 transition-colors duration-150" href="/signup">
                       Sign Up
                     </a>
                   </div>
@@ -81,8 +81,8 @@ const Pricing = () => {
               </div>
 
               {/* Pricing tab 2 */}
-              <div className="dark h-full">
-                <div className="relative flex flex-col h-full p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-900 shadow shadow-slate-950/5">
+              <div className="dark h-full transform transition-transform duration-200 hover:scale-105">
+              <div className="relative flex flex-col h-full p-6 rounded-2xl bg-[rgba(255,255,255,0.75)] dark:bg-[rgba(15,23,42,0.75)] border border-slate-200 dark:border-slate-900 shadow shadow-slate-950/5">
                   <div className="absolute top-0 right-0 mr-6 -mt-4">
                     <div className="inline-flex items-center text-xs font-semibold py-1.5 px-3 bg-emerald-500 text-white rounded-full shadow-sm shadow-slate-950/5">Most Popular</div>
                   </div>
@@ -94,7 +94,7 @@ const Pricing = () => {
                       <span className="text-slate-500 font-medium">/mo</span>
                     </div>
                     <div className="text-sm text-slate-500 mb-5">Unlock premium features to manage your restaurant's online presence.</div>
-                    <a className="w-full inline-flex justify-center whitespace-nowrap rounded-lg bg-black px-3.5 py-2.5 text-sm font-medium text-white shadow-sm shadow-indigo-950/10 hover:bg-indigo-600 focus-visible:outline-none focus-visible:ring focus-visible:ring-indigo-300 dark:focus-visible:ring-slate-600 transition-colors duration-150" href="/premiumsignup">
+                    <a className="w-full inline-flex justify-center whitespace-nowrap rounded-lg bg-black px-3.5 py-2.5 text-sm font-medium text-white shadow-sm shadow-indigo-950/10 hover:bg-green-600 focus-visible:outline-none focus-visible:ring focus-visible:ring-indigo-300 dark:focus-visible:ring-slate-600 transition-colors duration-150" href="/premiumsignup">
                       Purchase Plan
                     </a>
                   </div>
@@ -129,8 +129,8 @@ const Pricing = () => {
               </div>
 
               {/* Pricing tab 3 */}
-              <div className="h-full">
-                <div className="relative flex flex-col h-full p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-900 shadow shadow-slate-950/5">
+              <div className="h-full transform transition-transform duration-200 hover:scale-105">
+              <div className="relative flex flex-col h-full p-6 rounded-2xl bg-[rgba(255,255,255,0.75)] dark:bg-[rgba(15,23,42,0.75)] border border-slate-200 dark:border-slate-900 shadow shadow-slate-950/5">
                   <div className="mb-5">
                     <div className="text-slate-900 dark:text-slate-200 font-semibold mb-1">Worker</div>
                     <div className="inline-flex items-baseline mb-2">
@@ -139,7 +139,7 @@ const Pricing = () => {
                       <span className="text-slate-500 font-medium">/mo</span>
                     </div>
                     <div className="text-sm text-slate-500 mb-5">Share your workplace experiences and help foster transparency and fair labor practices.</div>
-                    <a className="w-full inline-flex justify-center whitespace-nowrap rounded-lg bg-black px-3.5 py-2.5 text-sm font-medium text-white shadow-sm shadow-indigo-950/10 hover:bg-indigo-600 focus-visible:outline-none focus-visible:ring focus-visible:ring-indigo-300 dark:focus-visible:ring-slate-600 transition-colors duration-150" href="/workersignup">
+                    <a className="w-full inline-flex justify-center whitespace-nowrap rounded-lg bg-black px-3.5 py-2.5 text-sm font-medium text-white shadow-sm shadow-indigo-950/10 hover:bg-green-600 focus-visible:outline-none focus-visible:ring focus-visible:ring-indigo-300 dark:focus-visible:ring-slate-600 transition-colors duration-150" href="/workersignup">
                       Sign Up
                     </a>
                   </div>
