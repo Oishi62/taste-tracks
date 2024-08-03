@@ -1,9 +1,9 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import Home from './pages/Home'
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Login from './pages/Login'
 import Signup from './pages/Signup'
 import Pricing from './pages/Pricing'
@@ -14,15 +14,23 @@ import MyProfile from './pages/MyProfile'
 import WorkerSignUp from './pages/WorkerSignUp'
 import WorkerHome_Reviews from './pages/WorkerHome_Reviews'
 import OwnerHomePage from './pages/OwnerHomePage'
+import { auth } from './firebase'
 function App() {
   const [count, setCount] = useState(0)
-
+  const [user, setUser] = useState();
+  useEffect(() =>{
+    auth.onAuthStateChanged(user=>{
+      setUser(user);
+    });
+  })
   return (
     <>
       <BrowserRouter>
       <Routes>
         {/* <Route path="/"> */}
-          <Route path="/" element={<Home />} />
+          <Route path="/" 
+          element={user ? <Navigate to="/home_reviews"/> :<Home/>} 
+          />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/pricing" element={<Pricing />} />

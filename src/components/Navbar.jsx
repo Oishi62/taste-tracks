@@ -1,5 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import SignOutButton from './SignOutButton'
+
 const Navbar = () => {
   return (
 <>
@@ -82,7 +84,8 @@ const Navbar = () => {
     <Link to="/home_reviews" className="text-black hover:scale-110 inline-flex items-center rounded-md py-2 px-3 text-sm font-medium" aria-current="page">Home</Link>
       <Link to="/myprofile" className="hover:scale-110 inline-flex items-center rounded-md py-2 px-3 text-sm font-medium">My Profile</Link>
       <Link to="/about" className="text-black hover:scale-110 inline-flex items-center rounded-md py-2 px-3 text-sm font-medium">About</Link>
-      <Link to="/" className="text-black hover:scale-110 inline-flex items-center rounded-md py-2 px-3 text-sm font-medium">Sign Out</Link>
+      {/* <Link to="/" className="text-black hover:scale-110 inline-flex items-center rounded-md py-2 px-3 text-sm font-medium">Sign Out</Link> */}
+      <SignOutButton />
   </nav>
 </div>
 
@@ -97,7 +100,7 @@ const Navbar = () => {
        <Link to="/" className="text-black hover:scale-110 inline-flex items-center rounded-md py-2 px-3 text-sm font-medium" aria-current="page">Home</Link>
       <Link to="/myprofile" className="hover:scale-110 inline-flex items-center rounded-md py-2 px-3 text-sm font-medium">My Profile</Link>
       <Link to="/about" className="text-black hover:scale-110 inline-flex items-center rounded-md py-2 px-3 text-sm font-medium">About</Link>
-      <Link to="/signout" className="text-black hover:scale-110 inline-flex items-center rounded-md py-2 px-3 text-sm font-medium">Sign Out</Link>
+      <SignOutButton />
     </div>
     <div className="border-t border-gray-700 pb-3 pt-4">
       <div className="flex items-center px-4">

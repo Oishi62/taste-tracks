@@ -1,5 +1,6 @@
 import {initializeApp} from "firebase/app"
-
+import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
 const firebaseConfig = {
     apiKey: "AIzaSyDYUMpnLX0RaeR3I8H6kdwgDu6mtSFjR1U",
     authDomain: "tastetracks-1a195.firebaseapp.com",
@@ -10,4 +11,8 @@ const firebaseConfig = {
     measurementId: "G-BV60Y2GT2E"
   };
 
-  export const app=initializeApp(firebaseConfig);
+  const app=initializeApp(firebaseConfig);
+
+  export const auth=getAuth();
+  export const db=getFirestore(app);
+  export default app;

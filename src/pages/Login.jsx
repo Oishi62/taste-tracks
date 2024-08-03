@@ -1,6 +1,25 @@
-import React from 'react';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import {React,useState} from 'react';
 import { useNavigate } from 'react-router-dom';
+import { auth } from '../firebase';
+
 const Login = () => {
+
+  const [email,setEmail]=useState("");
+  const [password,setPassword]=useState("");
+
+  const handleSubmit=async(e)=>{
+    e.preventDefault();
+    try {
+      await signInWithEmailAndPassword(auth,email,password);
+      console.log("User Logged In Successfully");
+      window.location.href="/home_reviews";
+      alert("Login Successfull!");
+
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 
   const navigate = useNavigate();
 
@@ -17,13 +36,14 @@ const Login = () => {
               <h1 className="text-xl font-semibold">Welcome back</h1>
               <small className="text-gray-400">Welcome back! Please enter your details</small>
 
-              <form className="mt-4">
+              <form className="mt-4" onSubmit={handleSubmit}>
                 <div className="mb-3">
                   <label className="mb-2 block text-xs font-semibold">Email</label>
                   <input
                     type="email"
                     placeholder="Enter your email"
                     className="block w-full rounded-md border border-gray-300 focus:border-purple-700 focus:outline-none focus:ring-1 focus:ring-purple-700 py-1 px-1.5 text-gray-500"
+                    onChange={(e)=>setEmail(e.target.value)}
                   />
                 </div>
 
@@ -33,13 +53,14 @@ const Login = () => {
                     type="password"
                     placeholder="*****"
                     className="block w-full rounded-md border border-gray-300 focus:border-purple-700 focus:outline-none focus:ring-1 focus:ring-purple-700 py-1 px-1.5 text-gray-500"
+                    onChange={(e)=>setPassword(e.target.value)}
                   />
                 </div>
 
                 
 
                 <div className="mb-3">
-                  <button className="mb-1.5 block w-full text-center text-white bg-black  px-2 py-1.5 rounded-md" onClick={navigateToOtherPage}>Sign in</button>
+                  <button className="mb-1.5 block w-full text-center text-white bg-black  px-2 py-1.5 rounded-md" >Sign in</button>
                   <button className="flex flex-wrap justify-center w-full border border-gray-300 hover:border-gray-500 px-2 py-1.5 rounded-md">
                     <img className="w-5 mr-2" src="https://lh3.googleusercontent.com/COxitqgJr1sJnIDe8-jiKhxDx1FrYbtRHKJ9z_hELisAlapwE9LUPh6fcXIfb5vwpbMl4xl9H9TRFPc5NOO8Sb3VSgIBrfRYvW6cUA" alt="Google logo" />
                     Sign in with Google

@@ -1,6 +1,32 @@
-import React from 'react';
+import React,{useEffect,useState} from 'react';
+import { auth,db } from '../firebase';
+import { doc,getDoc } from 'firebase/firestore';
+
 
 const LeftLayout = () => {
+
+  const [userDetails,setUserDetails]=useState(null);
+  const fetchUserData=async()=>{
+    auth.onAuthStateChanged(async(user)=>{
+      console.log(user);
+      const docRef=doc(db,"Users",user.uid);
+      const docSnap=await getDoc(docRef);
+      if(docSnap.exists()){
+        setUserDetails(docSnap.data());
+        console.log(docSnap.data());
+        
+      }else{
+        console.log("User is not logged in");
+      }
+    });
+  }
+  useEffect(()=>{
+    fetchUserData();
+  },[]);
+
+  
+
+
   return (
     <>
       {/* Left Top Component */}
@@ -13,11 +39,25 @@ const LeftLayout = () => {
                 src="https://www.gravatar.com/avatar/2acfb745ecf9d4dccb3364752d17f65f?s=260&d=mp"
                 alt="John Doe"
               />
+
             </div>
+
             <div className="p-2">
-              <h3 className="text-center text-xl text-gray-900 font-medium leading-8">Joh Doe</h3>
-              <h5 className="text-center text-lg text-gray-900 font-medium leading-8">john.doe@gmail.com</h5>
+
+            {userDetails ? (
+
+              <>
+              <h3 className="text-center text-xl text-gray-900 font-medium leading-8">{userDetails.Username}</h3>
+              <h5 className="text-center text-lg text-gray-900 font-medium leading-8">{userDetails.email}</h5>
+              </>
+
+            ):(
+              <p>Loading....</p>
+            )}
+          
+
               
+            
             </div>
           </div>
         </div>
