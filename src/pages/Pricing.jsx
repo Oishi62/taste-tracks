@@ -36,7 +36,7 @@ const Pricing = () => {
             <div className="max-w-sm mx-auto grid gap-6 lg:grid-cols-3 items-start lg:max-w-none">
 
               {/* Pricing tab 1 */}
-              <div className="h-full transform transition-transform duration-200 hover:scale-105 hover:shadow-lg hover:shadow-[0_4px_15px_rgba(6,78,59,1)] overflow-hidden rounded-2xl">                                
+              <div className="h-full transform transition-transform duration-200 hover:scale-105 hover:shadow-lg hover:shadow-[0_4px_15px_rgba(0,100,0,1)] overflow-hidden rounded-2xl">                                
               <div className="relative flex flex-col h-full p-6 rounded-2xl bg-[rgba(255,255,255,0.75)] dark:bg-[rgba(15,23,42,0.75)] border border-slate-200 dark:border-slate-900 shadow shadow-slate-950/5">
               <div className="mb-5">
                     <div className="text-slate-900 dark:text-slate-200 font-semibold mb-1">Customer</div>
@@ -81,7 +81,7 @@ const Pricing = () => {
               </div>
 
               {/* Pricing tab 2 */}
-              <div className="h-full transform transition-transform duration-200 hover:scale-105 hover:shadow-lg hover:shadow-[0_4px_15px_rgba(6,78,59,1)] overflow-hidden rounded-2xl">                                
+              <div className="h-full transform transition-transform duration-200 hover:scale-105 hover:shadow-lg hover:shadow-[0_4px_15px_rgba(0,100,0,1)] overflow-hidden rounded-2xl">                                
               <div className="relative flex flex-col h-full p-6 rounded-2xl bg-[rgba(255,255,255,0.75)] dark:bg-[rgba(15,23,42,0.75)] border border-slate-200 dark:border-slate-900 shadow shadow-slate-950/5">
                   {/* <div className="absolute top-0 right-0 mr-6 -mt-4 z-10">
                     <div className="inline-flex items-center text-xs font-semibold py-1.5 px-3 bg-emerald-500 text-white rounded-full shadow-sm shadow-slate-950/5">Most Popular</div>
@@ -129,7 +129,7 @@ const Pricing = () => {
               </div>
 
               {/* Pricing tab 3 */}
-              <div className="h-full transform transition-transform duration-200 hover:scale-105 hover:shadow-lg hover:shadow-[0_4px_15px_rgba(6,78,59,1)] overflow-hidden rounded-2xl">                                
+              <div className="h-full transform transition-transform duration-200 hover:scale-105 hover:shadow-lg hover:shadow-[0_4px_15px_rgba(0,100,0,1)] overflow-hidden rounded-2xl">                                
               <div className="relative flex flex-col h-full p-6 rounded-2xl bg-[rgba(255,255,255,0.75)] dark:bg-[rgba(15,23,42,0.75)] border border-slate-200 dark:border-slate-900 shadow shadow-slate-950/5">
                   <div className="mb-5">
                     <div className="text-slate-900 dark:text-slate-200 font-semibold mb-1">Worker</div>
