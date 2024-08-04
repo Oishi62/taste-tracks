@@ -4,24 +4,36 @@ import { doc,getDoc } from 'firebase/firestore'
 
 const WorkerLeftLayout = () => {
 
-    const [userDetails,setUserDetails]=useState(null);
-  const fetchUserData=async()=>{
-    auth.onAuthStateChanged(async(user)=>{
+  const [userDetails, setUserDetails] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  const fetchUserData = async () => {
+    auth.onAuthStateChanged(async (user) => {
       console.log(user);
-      const docRef=doc(db,"Workers",user.uid);
-      const docSnap=await getDoc(docRef);
-      if(docSnap.exists()){
-        setUserDetails(docSnap.data());
-        console.log(docSnap.data());
-        
-      }else{
-        console.log("User is not logged in");
+      if (user) {
+        if (user.providerData.some((provider) => provider.providerId === 'google.com')) {
+          // User logged in with Google
+          setUserDetails({
+            displayName: user.displayName,
+            email: user.email,
+          });
+        } else {
+          // User logged in with email/password
+          const docRef = doc(db, "Workers", user.uid);
+          const docSnap = await getDoc(docRef);
+          if (docSnap.exists()) {
+            setUserDetails(docSnap.data());
+          }
+        }
       }
+      setLoading(false);
     });
-  }
-  useEffect(()=>{
+  };
+
+  useEffect(() => {
     fetchUserData();
-  },[]);
+  }, []);
+
 
   return (
     <>
@@ -40,21 +52,20 @@ const WorkerLeftLayout = () => {
             </div>
 
             <div className="p-2">
-
-            {userDetails ? (
-
-              <>
-              <h3 className="text-center text-xl text-gray-900 font-medium leading-8">{userDetails.Username}</h3>
-              <h5 className="text-center text-lg text-gray-900 font-medium leading-8">{userDetails.email}</h5>
-              </>
-
-            ):(
-              <p>Loading....</p>
-            )}
-          
-
-              
-            
+              {loading ? (
+                <p>Loading....</p>
+              ) : userDetails ? (
+                <>
+                  <h3 className="text-center text-xl text-gray-900 font-medium leading-8">
+                    {userDetails.displayName || userDetails.Username}
+                  </h3>
+                  <h5 className="text-center text-lg text-gray-900 font-medium leading-8">
+                    {userDetails.email}
+                  </h5>
+                </>
+              ) : (
+                <p>No user details available</p>
+              )}
             </div>
           </div>
         </div>
