@@ -9,7 +9,7 @@ const SignOutButton = () => {
     try {
       await auth.signOut();
       console.log("User Logged out Successfully");
-      navigate('/login');
+      navigate('/');
     } catch (error) {
       console.log("Error Logging out:", error.message);
     }

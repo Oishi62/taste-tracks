@@ -1,7 +1,38 @@
-import React from 'react';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { auth,db } from '../firebase';
+import { setDoc,doc } from 'firebase/firestore';
 
 const PremuimSignup = () => {
+
+
+  const [email,setEmail]=useState("");
+  const [password,setPassword]=useState("");
+  const [username,setUsername]=useState("");
+
+  const handleRegister = async(e) => {
+    e.preventDefault();
+    try {
+      await  createUserWithEmailAndPassword(auth,email,password);
+      const user=auth.currentUser;
+      console.log(user);
+      if(user){
+        await setDoc(doc(db,"Owners",user.uid),{
+        email:user.email,
+        Username:username,
+      });  
+    }
+      console.log("User Registered Successfully");
+      alert("Thank You for using our Platform. You are successfully registered!");
+
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+
+
+
   const navigate = useNavigate();
 
   const navigateToOtherPage = () => {
@@ -39,7 +70,7 @@ const PremuimSignup = () => {
           </h2>
 
           
-          <form action="#" method="POST" className="space-y-4">
+          <form onSubmit={handleRegister} method="POST" className="space-y-4">
             <div>
               <label htmlFor="username" className="block text-sm font-medium text-gray-700">
                 Restaurant Username
@@ -49,6 +80,7 @@ const PremuimSignup = () => {
                 id="username"
                 name="username"
                 className="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300"
+                onChange={(e)=>setUsername(e.target.value)}
               />
             </div>
             <div>
@@ -60,6 +92,7 @@ const PremuimSignup = () => {
                 id="email"
                 name="email"
                 className="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300"
+                onChange={(e)=>setEmail(e.target.value)}
               />
             </div>
             <div>
@@ -71,13 +104,13 @@ const PremuimSignup = () => {
                 id="password"
                 name="password"
                 className="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300"
+                onChange={(e)=>setPassword(e.target.value)}
               />
             </div>
             <div>
               <button
                 type="submit"
                 className="w-full bg-black text-white p-2 rounded-md hover:bg-gray-800 focus:outline-none focus:bg-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 transition-colors duration-300"
-                onClick={navigateToOtherPage}
               >
                 Sign Up
               </button>
@@ -86,7 +119,7 @@ const PremuimSignup = () => {
           <div className="mt-4 text-sm text-gray-600 text-center">
             <p>
               Already have an account?{' '}
-              <a href="/login" className="text-black hover:underline">
+              <a href="/ownerlogin" className="text-black hover:underline">
                 Login here
               </a>
             </p>

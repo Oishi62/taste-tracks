@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { auth,db } from '../firebase';
 import { setDoc,doc } from 'firebase/firestore';
+import SignInWithGoogle from '../components/SignInWithGoogle';
 
 const Signup = () => {
 
@@ -66,7 +67,7 @@ const Signup = () => {
             Join TasteTracks to discover authentic restaurant reviews and gain insights into food industry work culture!
           </h2>
           <div className="mt-4 flex flex-col items-center justify-between">
-            <div className="w-full mb-2">
+            {/* <div className="w-full mb-2">
               <button
                 type="button"
                 className="w-full flex justify-center items-center gap-2 bg-white text-sm text-gray-600 p-2 rounded-md hover:bg-gray-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-200 transition-colors duration-300"
@@ -92,7 +93,8 @@ const Signup = () => {
                 Sign Up with Google
               </button>
             </div>
-            
+             */}
+             <SignInWithGoogle/>
           </div>
           <div className="mt-4 text-sm text-black text-center">
             <p>or with email</p>

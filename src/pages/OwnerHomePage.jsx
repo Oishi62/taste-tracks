@@ -1,4 +1,5 @@
 import React from 'react'
+import SignOutButton from '../components/SignOutButton'
 
 const OwnerHomePage = () => {
 
@@ -14,7 +15,8 @@ const OwnerHomePage = () => {
     <nav className="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
       <a className="mr-5 text-black hover:text-gray-900 cursor-pointer hover:scale-110" href="#about">About</a>
       <a className="mr-5 hover:text-gray-900 text-black cursor-pointer hover:scale-110" href="#features">Features</a>
-      <a className="ml-80 hover:text-gray-900 text-black cursor-pointer hover:scale-110" href="/login">Sign Out</a>
+      {/* <a className="ml-80 hover:text-gray-900 text-black cursor-pointer hover:scale-110" href="/login">Sign Out</a> */}
+      <SignOutButton/>
     </nav>
     
   </div>

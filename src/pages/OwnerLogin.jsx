@@ -1,20 +1,18 @@
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import {React,useState} from 'react';
-import { useNavigate } from 'react-router-dom';
 import { auth } from '../firebase';
-import SignInWithGoogle from '../components/SignInWithGoogle';
 
-const Login = () => {
+const OwnerLogin = () => {
 
-  const [email,setEmail]=useState("");
-  const [password,setPassword]=useState("");
+    const [email,setEmail]=useState("");
+    const [password,setPassword]=useState("");
 
   const handleSubmit=async(e)=>{
     e.preventDefault();
     try {
       await signInWithEmailAndPassword(auth,email,password);
       console.log("User Logged In Successfully");
-      window.location.href="/home_reviews";
+      window.location.href="/ownerhomepage";
       alert("Login Successfull!");
 
     } catch (error) {
@@ -22,15 +20,11 @@ const Login = () => {
     }
   };
 
-  const navigate = useNavigate();
-
-  const navigateToOtherPage = () => {
-    navigate('/home_reviews');
-  };
 
   return (
-    <>
-      <div className="flex flex-wrap min-h-screen w-full content-center justify-center bg-green-200 py-10">
+   <>
+   
+   <div className="flex flex-wrap min-h-screen w-full content-center justify-center bg-green-200 py-10">
         <div className="flex shadow-md">
           <div className="flex flex-wrap content-center justify-center rounded-l-md bg-white" style={{ width: '24rem', height: '32rem' }}>
             <div className="w-72">
@@ -57,11 +51,16 @@ const Login = () => {
                     onChange={(e)=>setPassword(e.target.value)}
                   />
                 </div>
-                <div className="mb-3">
-                <button className="mb-1.5 block w-full text-center text-white bg-black  px-2 py-1.5 rounded-md" >Sign in</button>
-              <SignInWithGoogle/>
-              </div>
+
                 
+
+                <div className="mb-3">
+                  <button className="mb-1.5 block w-full text-center text-white bg-black  px-2 py-1.5 rounded-md" >Sign in</button>
+                  <button className="flex flex-wrap justify-center w-full border border-gray-300 hover:border-gray-500 px-2 py-1.5 rounded-md">
+                    <img className="w-5 mr-2" src="https://lh3.googleusercontent.com/COxitqgJr1sJnIDe8-jiKhxDx1FrYbtRHKJ9z_hELisAlapwE9LUPh6fcXIfb5vwpbMl4xl9H9TRFPc5NOO8Sb3VSgIBrfRYvW6cUA" alt="Google logo" />
+                    Sign in with Google
+                  </button>
+                </div>
               </form>
 
               <div className="text-center">
@@ -112,8 +111,9 @@ const Login = () => {
 
         
       </div>
-    </>
-  );
-};
+   
+   </>
+  )
+}
 
-export default Login;
+export default OwnerLogin

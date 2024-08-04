@@ -15,6 +15,8 @@ import WorkerSignUp from './pages/WorkerSignUp'
 import WorkerHome_Reviews from './pages/WorkerHome_Reviews'
 import OwnerHomePage from './pages/OwnerHomePage'
 import { auth } from './firebase'
+import WorkerLogin from './pages/WorkerLogin'
+import OwnerLogin from './pages/OwnerLogin'
 function App() {
   const [count, setCount] = useState(0)
   const [user, setUser] = useState();
@@ -41,6 +43,8 @@ function App() {
           <Route path="/ownerhomepage" element={<OwnerHomePage />} />
           <Route path="/workerhome_reviews" element={<WorkerHome_Reviews />} />
           <Route path="/workersignup" element={<WorkerSignUp />} />
+          <Route path="/workerlogin" element={<WorkerLogin />} />
+          <Route path="/ownerlogin" element={<OwnerLogin />} />
 
           {/* <Route path="blogs" element={<Blogs />} /> */}
         {/* </Route> */}
