@@ -102,7 +102,7 @@ import PasswordReset from '../components/PasswordReset';
 import React, { useEffect, useState } from 'react';
 import { auth, db } from '../firebase';
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
-
+import { sendPasswordResetEmail } from 'firebase/auth';
 const MyProfile = () => {
 
   const [showModal, setShowModal] = useState(false);
@@ -131,8 +131,20 @@ const MyProfile = () => {
     }
   };
 
-
-
+  const handlePasswordReset = async () => {
+    if (auth.currentUser) {
+      try {
+        await sendPasswordResetEmail(auth, auth.currentUser.email);
+        alert("Password reset email sent successfully.");
+      } catch (error) {
+        console.error("Error sending password reset email:", error);
+        alert("Error sending password reset email: " + error.message);
+      }
+    } else {
+      alert("No user is currently logged in.");
+    }
+  };
+  
   return (
     <>
       <Navbar />
@@ -142,6 +154,7 @@ const MyProfile = () => {
             <h2 className="text-xl font-bold text-charcoal mb-6">Options:</h2>
             <button className="w-full bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg mb-4">Show Profile Details</button>
             <button className="w-full bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg mb-4">Update Profile Details</button>
+            <button className="w-full bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg mb-4" onClick={handlePasswordReset}>Reset Password</button>
             <button className="w-full bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg mb-4" onClick={() => setShowModal(true)}>Password Reset</button>
 
           </div>
