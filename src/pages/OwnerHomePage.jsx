@@ -29,7 +29,7 @@ const OwnerHomePage = () => {
       </h3>
       <p className="mb-8 leading-relaxed opacity-80 ">Attract more diners with valuable insights and priority listings. Leverage advanced analytics and exclusive feedback to enhance your business. Enjoy dedicated support and stay ahead with industry reports. </p>
       <div className="flex justify-center">
-        <button className="inline-flex text-black bg-green-400 py-2 px-4 focus:outline-none hover:bg-opacity-80 rounded text-sm">Claim Account</button>
+        <button className="inline-flex text-black bg-green-400 py-2 px-4 focus:outline-none hover:bg-opacity-80 rounded text-sm transition transform hover:-translate-y-1">Claim Account</button>
         
       </div>
     </div>
