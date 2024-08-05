@@ -57,8 +57,8 @@ const Home = () => {
                 The First Dual-Platform for Comprehensive Culinary and Work Culture Reviews in the Food Industry
               </p> */}
               <div className="flex flex-col space-y-4 sm:items-center sm:justify-center sm:flex-row sm:space-y-0 sm:space-x-4 lg:justify-start">
-			  <a rel="noopener noreferrer" href="/login" className="px-8 py-3 text-lg font-semibold rounded-full bg-green-400 text-gray-900 border-2 border-gray-600 transition transform hover:-translate-y-1">Sign In</a>
-			  <a rel="noopener noreferrer" href="/pricing" className="px-8 py-3 text-lg font-semibold border rounded-full border-gray-100 border-2 border-gray-600 transition transform hover:-translate-y-1">Sign Up</a>
+			  <a rel="noopener noreferrer" href="/pricing" className="px-8 py-3 text-lg font-semibold rounded-full bg-green-400 text-gray-900 border-2 border-gray-600 transition transform hover:-translate-y-1">Explore</a>
+			  
 
               </div>
             </div>
