@@ -40,93 +40,91 @@ const PremuimSignup = () => {
   };
 
   return (
-    <div className="flex h-screen  items-center justify-center bg-gray-100 bg-[url('signupbg.png')] bg-cover bg-no-repeat">
-      <div className="bg-white bg-opacity-30 rounded-lg shadow-lg p-8 lg:p-12 w-3/4 h-auto flex items-center">
-        {/* SVG Container */}
-        <div className="pr-32">
-        <div className="absolute top-20 left-50 w-16 h-16 flex items-center justify-center">   
-                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" className="w-48 h-48">
-            <g data-name="2-Food equipment">
-              <path d="M13 15a5.006 5.006 0 0 1-5-5V0h2v10a3 3 0 0 0 6 0V0h2v10a5.006 5.006 0 0 1-5 5z" />
-              <path d="M12 0h2v24h-2z" />
-              <path d="M15 48h-4a1 1 0 0 1-1-1V26a3 3 0 0 1 6 0v21a1 1 0 0 1-1 1zm-3-2h2V26a1 1 0 0 0-2 0zM26 48h-4a1 1 0 0 1-1-1V31a3 3 0 0 1 6 0v16a1 1 0 0 1-1 1zm-3-2h2V31a1 1 0 0 0-2 0z" />
-              <path d="M26 29h-2v-3.4l-1.757-.94a5.807 5.807 0 0 1-3.129-6.26l2.75-16.656A2.082 2.082 0 0 1 26 2.082zM23.918 2a.082.082 0 0 0-.081.067l-2.757 16.7a3.787 3.787 0 0 0 2.107 4.133l.813.435V2.082A.082.082 0 0 0 23.918 2zM33 14h2v10h-2z" />
-              <path d="M36 48h-4a1 1 0 0 1-1-1V26a3 3 0 0 1 6 0v21a1 1 0 0 1-1 1zm-3-2h2V26a1 1 0 0 0-2 0zM34 16c-3.309 0-6-3.589-6-8s2.691-8 6-8 6 3.589 6 8-2.691 8-6 8zm0-14c-2.168 0-4 2.748-4 6s1.832 6 4 6 4-2.748 4-6-1.832-6-4-6zM8 42H6a6.006 6.006 0 0 1-6-6V12a6.006 6.006 0 0 1 6-6v2a4 4 0 0 0-4 4v24a4 4 0 0 0 4 4h2zM42 42h-3v-2h3a4 4 0 0 0 4-4V12a4 4 0 0 0-4-4V6a6.006 6.006 0 0 1 6 6v24a6.006 6.006 0 0 1-6 6z" />
-              <path d="M8 38H6a2 2 0 0 1-2-2V12a2 2 0 0 1 2-2v26h2zM42 38h-3v-2h3V10a2 2 0 0 1 2 2v24a2 2 0 0 1-2 2zM18 36h4v2h-4zM18 40h4v2h-4zM26 36h3v2h-3zM26 40h3v2h-3z" />
-            </g>
+    <div className="flex min-h-screen items-center justify-center bg-gray-100 bg-[url('signupbg.png')] bg-cover bg-no-repeat p-4">
+    <div className="bg-white bg-opacity-30 rounded-lg shadow-lg p-4 sm:p-6 md:p-8 lg:p-12 w-full max-w-4xl flex flex-col lg:flex-row items-center">
+      {/* SVG and Welcome Text Container */}
+      <div className="w-full lg:w-1/2 mb-6 lg:mb-0 lg:pr-8">
+        <div className="flex justify-center lg:justify-start mb-4">   
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" className="w-24 h-24 sm:w-32 sm:h-32 lg:w-48 lg:h-48">
+            {/* SVG content */}
           </svg>
         </div>
-        <div>
-        <p className="text-6xl font-bold">Welcome!</p><br />
-        <hr className="border-t-4 border-black w-1/5 my-4"/>
-        <p>Join Our Platform to "Discover authentic dining experiences with expert reviews and insider insights."</p>
+        <div className="text-center lg:text-left">
+          <p className="text-4xl sm:text-5xl lg:text-6xl font-bold">Welcome!</p>
+          <hr className="border-t-4 border-black w-1/5 my-4 mx-auto lg:mx-0"/>
+          <p className="text-sm sm:text-base">Join Our Platform to "Discover authentic dining experiences with expert reviews and insider insights."</p>
         </div>
-        </div>
-        {/* Signup Form Container */}
-        <div className="w-1/2 p-6 bg-white bg-opacity-50 rounded-lg shadow-lg">
-          <h1 className="text-3xl font-semibold mb-6 text-black text-center">Sign Up</h1>
-          <h2 className="text-sm font-semibold mb-6 text-black text-center">
-            Join TasteTracks to discover authentic restaurant reviews and gain insights into food industry work culture!
-          </h2>
+      </div>
 
-          
-          <form onSubmit={handleRegister} method="POST" className="space-y-4">
-            <div>
-              <label htmlFor="username" className="block text-sm font-medium text-gray-700">
-                Restaurant Username
-              </label>
-              <input
-                type="text"
-                id="username"
-                name="username"
-                className="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300"
-                onChange={(e)=>setUsername(e.target.value)}
-              />
-            </div>
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                Email
-              </label>
-              <input
-                type="text"
-                id="email"
-                name="email"
-                className="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300"
-                onChange={(e)=>setEmail(e.target.value)}
-              />
-            </div>
-            <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-                Password
-              </label>
-              <input
-                type="password"
-                id="password"
-                name="password"
-                className="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300"
-                onChange={(e)=>setPassword(e.target.value)}
-              />
-            </div>
-            <div>
-              <button
-                type="submit"
-                className="w-full bg-black text-white p-2 rounded-md hover:bg-gray-800 focus:outline-none focus:bg-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 transition-colors duration-300"
-              >
-                Sign Up
-              </button>
-            </div>
-          </form>
-          <div className="mt-4 text-sm text-gray-600 text-center">
-            <p>
-              Already have an account?{' '}
-              <a href="/ownerlogin" className="text-black hover:underline">
-                Login here
-              </a>
-            </p>
+      {/* Signup Form Container */}
+      <div className="w-full lg:w-1/2 p-4 sm:p-6 bg-white bg-opacity-50 rounded-lg shadow-lg">
+        <h1 className="text-2xl sm:text-3xl font-semibold mb-4 text-black text-center">Sign Up</h1>
+        <h2 className="text-xs sm:text-sm font-semibold mb-4 text-black text-center">
+          Join TasteTracks to discover authentic restaurant reviews and gain insights into food industry work culture!
+        </h2>
+        {/* <div className="mt-4 flex flex-col items-center justify-between">
+          <SignInWithGoogle />
+        </div> */}
+        {/* <div className="mt-4 text-sm text-black text-center">
+          <p>or with email</p>
+        </div> */}
+        <form onSubmit={handleRegister} method="POST" className="space-y-4">
+          <div>
+            <label htmlFor="username" className="block text-sm font-medium text-gray-700">
+              Username
+            </label>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              className="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300"
+              onChange={(e) => setUsername(e.target.value)}
+            />
           </div>
+          <div>
+            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+              Email
+            </label>
+            <input
+              type="text"
+              id="email"
+              name="email"
+              className="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300"
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+          <div>
+            <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+              Password
+            </label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              className="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+          <div>
+            <button
+              type="submit"
+              className="w-full bg-black text-white p-2 rounded-md hover:bg-gray-800 focus:outline-none focus:bg-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 transition-colors duration-300"
+            >
+              Sign Up
+            </button>
+          </div>
+        </form>
+        <div className="mt-4 text-sm text-gray-600 text-center">
+          <p>
+            Already have an account?{' '}
+            <a href="/ownerlogin" className="text-black hover:underline">
+              Login here
+            </a>
+          </p>
         </div>
       </div>
     </div>
+  </div>
   );
 };
 

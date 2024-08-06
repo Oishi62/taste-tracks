@@ -13,9 +13,6 @@ const Home_Reviews = () => {
     <div class="col-end-5 col-span-2 overflow-y-auto h-full no-scrollbar">
       <PostReview/>
       <ReviewCard/>
-      <ReviewCard/>
-      <ReviewCard/><ReviewCard/>
-
 
 
       </div>

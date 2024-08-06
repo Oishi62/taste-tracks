@@ -8,7 +8,7 @@ const About = () => {
                 <div className="relative w-full max-w-full lg:max-w-6xl xl:max-w-screen-2xl mx-auto">
 
                 {/* <div className="absolute inset-0 -mr-3.5 bg-gradient-to-r from-blue-100 to-cyan-500 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:rotate-3 sm:rounded-3xl hidden sm:block"></div> */}
-                    <div className="relative bg-white shadow-lg sm:rounded-3xl">
+                    <div className="relative bg-green-200 shadow-lg sm:rounded-3xl">
 
 
                         <div className="px-5 sm:px-20 py-6">
@@ -17,37 +17,37 @@ const About = () => {
 
                                 <div className="container mx-auto p-4 my-6 space-y-2 text-center">
                                     {/* <a href="/adminsignin"><span className="px-24 sm:px-32 block text-cyan-600">Admin Sign In</span></a> */}
-                                    <h2 className="text-3xl sm:text-5xl font-bold mt-7">Revolutionizing Restaurant Transparency and Engagement
+                                    <h2 className="text-3xl sm:text-5xl font-bold mt-7 text-green-600">Revolutionizing Restaurant Transparency and Engagement
                                     </h2>
                                     <br />
                                     <p className="text-gray-600">Centralized Reviews, Worker Insights, and Seamless Feedback for a Fairer and More Informed Dining Experience.</p>
                                 </div>
                                 <div className="container mx-auto grid justify-center gap-4 sm:grid-cols-2 lg:grid-cols-3">
                                     <div className="flex flex-col items-center p-4">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-8 h-8 text-gray-600">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-8 h-8 text-green-900">
                                             <path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd"></path>
                                         </svg>
-                                        <h3 className="my-3 text-xl sm:text-3xl font-semibold text-center">Detailed Reviews</h3>
+                                        <h3 className="my-3 text-xl sm:text-3xl font-semibold text-center text-green-600">Detailed Reviews</h3>
                                         <div className="space-y-1 leadi">
                                             <p className='text-center'>Effortlessly access detailed reviews of restaurants, including food quality, service, and ambiance, ensuring you make informed dining decisions.</p>
                                             
                                         </div>
                                     </div>
                                     <div className="flex flex-col items-center p-4">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-8 h-8 text-gray-600">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-8 h-8 text-green-900">
                                             <path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd"></path>
                                         </svg>
-                                        <h3 className="my-3 text-xl sm:text-3xl font-semibold text-center">Worker Insights</h3>
+                                        <h3 className="my-3 text-xl sm:text-3xl font-semibold text-center text-green-600">Worker Insights</h3>
                                         <div className="space-y-1 leadi">
                                             <p className='text-center'>Gain valuable insights into the workplace conditions of restaurants, shared anonymously by workers, to promote transparency and fair practices.</p>
                                         </div>
 
                                     </div>
                                     <div className="flex flex-col items-center p-4">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-8 h-8 text-gray-600">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-8 h-8 text-green-900">
                                             <path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd"></path>
                                         </svg>
-                                        <h3 className="my-3 text-xl sm:text-3xl font-semibold text-center">Owner Engagement
+                                        <h3 className="my-3 text-xl sm:text-3xl font-semibold text-center text-green-600">Owner Engagement
 
 </h3>
                                         <div className="space-y-1 leadi">
@@ -61,14 +61,14 @@ const About = () => {
 
                                 <div className="container flex flex-col items-center justify-center p-4 mx-auto sm:p-10">
                                     <p className="p-2 text-sm font-medium tracki text-center uppercase">Development team</p>
-                                    <h1 className="text-2xl sm:text-4xl font-bold leadi text-center">The talented people behind the scenes</h1>
+                                    <h1 className="text-2xl sm:text-4xl font-bold leadi text-center text-green-600">The talented people behind the scenes</h1>
                                     <div className="flex flex-col lg:flex-row justify-center lg:space-x-8 mt-16 gap-y-4">
 
-                                        <div className="flex flex-col justify-center w-full px-4 my-6 sm:w-96 bg-gray-600 text-gray-100 rounded-md">
-                                            <img alt="" className="self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full bg-gray-500 p-2" src="user.png" />
+                                        <div className="flex flex-col justify-center w-full px-4 my-6 sm:w-96 bg-green-400 text-gray-100 rounded-md">
+                                            <img alt="" className="self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full bg-gray-500" src="profilepic1.png" />
                                             <div className="flex-1 my-4">
-                                                <p className="text-lg font-semibold leadi text-center">Oishi Halder</p>
-                                                <p className="text-center">Full Stack Developer</p>
+                                                <p className="text-lg font-semibold leadi text-center text-black">Oishi Halder</p>
+                                                <p className="text-center text-black">Full Stack Developer</p>
                                             </div>
                                             <div className="flex items-center justify-center p-3 space-x-3 border-t-2">
                                                 <a rel="noopener noreferrer" href="mailto:oishihalder8475@gmail.com" title="Email" className="text-gray-50 hover:text-cyan-600">
@@ -95,11 +95,11 @@ const About = () => {
                                             </div>
                                         </div>
 
-                                        <div className="flex flex-col justify-center w-full px-4 my-6 sm:w-96 bg-gray-600 text-gray-100 rounded-md">
-                                            <img alt="" className="self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full bg-gray-500 p-2" src="user.png" />
+                                        <div className="flex flex-col justify-center w-full px-4 my-6 sm:w-96 bg-green-400 text-gray-100 rounded-md">
+                                            <img alt="" className="self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full bg-gray-500" src="profilepic2.png" />
                                             <div className="flex-1 my-4">
-                                                <p className="text-lg font-semibold leadi text-center">Hemangshu Dey</p>
-                                                <p className="text-center">Full Stack Developer</p>
+                                                <p className="text-lg font-semibold leadi text-center text-black">Hemangshu Dey</p>
+                                                <p className="text-center text-black">Full Stack Developer</p>
                                             </div>
                                             <div className="flex items-center justify-center p-3 space-x-3 border-t-2">
                                                 <a rel="noopener noreferrer" href="mailto:hemangshu1904@gmail.com" title="Email" className="text-gray-50 hover:text-cyan-600">
