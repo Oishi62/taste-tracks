@@ -81,7 +81,7 @@ const WorkerNavbar = () => {
     <a href="#" className="hover:scale-110 inline-flex items-center rounded-md py-2 px-3 text-sm font-medium">My Profile</a>
     <a href="#" className="text-black hover:scale-110 inline-flex items-center rounded-md py-2 px-3 text-sm font-medium">About</a>
     <a href="#" className="text-black hover:scale-110 inline-flex items-center rounded-md py-2 px-3 text-sm font-medium">Sign Out</a> */}
-    <Link to="/home_reviews" className="text-black hover:scale-110 inline-flex items-center rounded-md py-2 px-3 text-sm font-medium" aria-current="page">Home</Link>
+    <Link to="/workerhome_reviews" className="text-black hover:scale-110 inline-flex items-center rounded-md py-2 px-3 text-sm font-medium" aria-current="page">Home</Link>
       <Link to="/workermyprofile" className="hover:scale-110 inline-flex items-center rounded-md py-2 px-3 text-sm font-medium">My Profile</Link>
       <Link to="/about" className="text-black hover:scale-110 inline-flex items-center rounded-md py-2 px-3 text-sm font-medium">About</Link>
       {/* <Link to="/" className="text-black hover:scale-110 inline-flex items-center rounded-md py-2 px-3 text-sm font-medium">Sign Out</Link> */}
@@ -97,8 +97,8 @@ const WorkerNavbar = () => {
       <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md py-2 px-3 text-base font-medium">My Profile</a>
       <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md py-2 px-3 text-base font-medium">About</a>
       <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md py-2 px-3 text-base font-medium">Sign Out</a> */}
-       <Link to="/" className="text-black hover:scale-110 inline-flex items-center rounded-md py-2 px-3 text-sm font-medium" aria-current="page">Home</Link>
-      <Link to="/myprofile" className="hover:scale-110 inline-flex items-center rounded-md py-2 px-3 text-sm font-medium">My Profile</Link>
+       <Link to="/workerhome_reviews" className="text-black hover:scale-110 inline-flex items-center rounded-md py-2 px-3 text-sm font-medium" aria-current="page">Home</Link>
+      <Link to="/workermyprofile" className="hover:scale-110 inline-flex items-center rounded-md py-2 px-3 text-sm font-medium">My Profile</Link>
       <Link to="/about" className="text-black hover:scale-110 inline-flex items-center rounded-md py-2 px-3 text-sm font-medium">About</Link>
       <SignOutButton />
     </div>

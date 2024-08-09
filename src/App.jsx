@@ -31,9 +31,11 @@ function App() {
       <BrowserRouter>
       <Routes>
         {/* <Route path="/"> */}
-          <Route path="/" 
+          {/* <Route path="/" 
           element={user ? <Navigate to="/home_reviews"/> :<Home/>} 
-          />
+          /> */}
+          <Route path="/" element={<Home />} />
+
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/pricing" element={<Pricing />} />
