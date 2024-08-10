@@ -171,8 +171,9 @@ const LeftLayout = () => {
       {/* Left Top Component */}
       <div className="flex items-center mt-5 w-full justify-center">
         <div className="w-64"> {/* Fixed width of 16rem */}
-          <div className="bg-gray-100 shadow-xl rounded-lg py-3">
+          <div className="bg-gray-100 shadow-xl rounded-lg py-3  bg-[url('profile_bg1.jpeg')] bg-cover bg-no-repeat">
             <div className="photo-wrapper p-2">
+              <br />
               <img
                 className="w-20 h-20 rounded-full mx-auto"
                 src="https://www.gravatar.com/avatar/2acfb745ecf9d4dccb3364752d17f65f?s=260&d=mp"
@@ -202,7 +203,7 @@ const LeftLayout = () => {
       {/* Lower Left Component */}
       <div className="flex items-center mt-5 w-full justify-center">
         <div className="w-64"> {/* Fixed width of 16rem */}
-          <div className="bg-gray-100 shadow-xl rounded-lg py-3">
+          <div className="bg-gray-100 shadow-xl rounded-lg py-3 bg-[url('green.jpeg')] bg-cover bg-no-repeat">
             <div className="p-2">
               <h3 className="text-center text-xl text-gray-900 font-medium leading-8">
                 Discover Restaurants

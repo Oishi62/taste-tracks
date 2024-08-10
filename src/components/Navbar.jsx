@@ -6,7 +6,7 @@ const Navbar = () => {
   return (
     <>
 
-      <header className="bg-gray-100">
+      <header className="bg-gradient-to-r from-custom-dark-green via-custom-light-green to-custom-dark-green">
         <div className="mx-auto max-w-7xl px-2 sm:px-4 lg:divide-y lg:divide-teal-700 lg:px-8">
           <div className="relative flex flex-wrap items-center justify-between py-2">
             {/* <div className="relative z-10 flex px-2 lg:px-0">

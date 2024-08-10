@@ -12,4 +12,13 @@ export default {
     },
   },
   plugins: [],
+
+  theme: {
+    extend: {
+      colors: {
+        'custom-light-green': '#cdffcd',
+        'custom-dark-green': '#91ee91',
+      },
+    },
+  },
 }
