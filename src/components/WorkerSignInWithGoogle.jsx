@@ -11,7 +11,7 @@ const WorkerSignInWithGoogle = () => {
             console.log(result);
             if(result.user){
                 alert("User Logged In Successfully");
-                window.location.href="/home_reviews";
+                window.location.href="/workerhome_reviews";
             }
         });
     

@@ -1,8 +1,7 @@
-import Navbar from '../components/Navbar';
 import PasswordReset from '../components/PasswordReset';
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { auth, db } from '../firebase';
-import { doc, updateDoc } from 'firebase/firestore';
+import { doc, updateDoc,getDoc } from 'firebase/firestore';
 import { sendPasswordResetEmail } from 'firebase/auth';
 import WorkerNavbar from '../components/WorkerNavbar';
 
@@ -16,6 +15,30 @@ const MyProfile = () => {
   const [description, setDescription] = useState("");
   const [showProfileDetails, setShowProfileDetails] = useState(true);
   const [showProfileForm, setShowProfileForm] = useState(false);
+  const [userDetails, setUserDetails] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  const fetchUserData = async () => {
+    auth.onAuthStateChanged(async (user) => {
+      console.log(user);
+      if (user) {
+          // User logged in with email/password
+          const docRef = doc(db, "Workers", user.uid);
+          const docSnap = await getDoc(docRef);
+          if (docSnap.exists()) {
+            setUserDetails(docSnap.data());
+          }
+        
+      }
+      setLoading(false);
+    });
+  };
+
+  useEffect(() => {
+    fetchUserData();
+  }, []);
+
+
 
   const handleAdditionalInfoSubmit = async (e) => {
     e.preventDefault();
@@ -189,18 +212,21 @@ const MyProfile = () => {
             {showProfileDetails && !showProfileForm && (
               <div className="bg-white p-6 shadow rounded-lg">
                 <h2 className="text-xl font-bold text-charcoal mb-4">Profile Details</h2>
-                <p><strong>Name:</strong> {profilename || "John Doe"}</p>
-                <p><strong>Phone:</strong> {phone || "(555) 555-5555"}</p>
-                <p><strong>Facebook:</strong> {facebook || "facebook.com/username"}</p>
-                <p><strong>Twitter:</strong> {twitter || "twitter.com/username"}</p>
-                <p><strong>Instagram:</strong> {instagram || "instagram.com/username"}</p>
-                <p><strong>Description:</strong> {description || "This is a description."}</p>
-                <p><strong>Description:</strong> {description || "This is a description."}</p>
-                <p><strong>Description:</strong> {description || "This is a description."}</p>
-                <p><strong>Description:</strong> {description || "This is a description."}</p>
-                <p><strong>Description:</strong> {description || "This is a description."}</p>
-                <p><strong>Description:</strong> {description || "This is a description."}</p>
-
+                {loading ? (
+                <p>Loading....</p>
+              ) : userDetails ? (
+                <>
+                <p><strong>Name:</strong> {userDetails.Username}</p>
+                <p><strong>Email:</strong> {userDetails.email}</p>
+                <p><strong>Phone:</strong> {userDetails.Phone}</p>
+                <p><strong>Instagram:</strong> {userDetails.Instagram}</p>
+                <p><strong>Twitter:</strong> {userDetails.Twitter}</p>
+                <p><strong>Facebook:</strong> {userDetails.Facebook}</p>
+                <p><strong>Description:</strong> {userDetails.Description}</p>
+                </>
+              ) : (
+                <p>No user details available</p>
+              )}
               </div>
             )}
           </div>

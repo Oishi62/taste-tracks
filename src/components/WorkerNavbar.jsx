@@ -1,8 +1,41 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'
 import SignOutButton from './SignOutButton'
+import { auth, db } from '../firebase';
+import { doc, getDoc } from 'firebase/firestore';
 
 const WorkerNavbar = () => {
+
+  const [userDetails, setUserDetails] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  const fetchUserData = async () => {
+    auth.onAuthStateChanged(async (user) => {
+      console.log(user);
+      if (user) {
+        if (user.providerData.some((provider) => provider.providerId === 'google.com')) {
+          // User logged in with Google
+          setUserDetails({
+            photoURL:user.photoURL,
+          });
+        } else {
+          // User logged in with email/password
+          const docRef = doc(db, "Users", user.uid);
+          const docSnap = await getDoc(docRef);
+          if (docSnap.exists()) {
+            setUserDetails(docSnap.data());
+          }
+        }
+      }
+      setLoading(false);
+    });
+  };
+
+  useEffect(() => {
+    fetchUserData();
+  }, []);
+
+
   return (
 <>
 
@@ -51,14 +84,7 @@ const WorkerNavbar = () => {
           </svg>
         </button> */}
 
-        <div className="relative ml-4 flex-shrink-0">
-          <div>
-            <button type="button" className="relative flex rounded-full bg-gray-800 text-sm text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
-              <span className="absolute -inset-1.5"></span>
-              <span className="sr-only">Open user menu</span>
-              <img className="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt=""/>
-            </button>
-          </div>
+<img className="w-12 h-12 rounded-full" src={userDetails?.photoURL || "https://www.gravatar.com/avatar/2acfb745ecf9d4dccb3364752d17f65f?s=260&d=mp"} alt="" />
 
          
           {/* <div className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
@@ -66,7 +92,7 @@ const WorkerNavbar = () => {
             <a href="#" className="block px-4 py-2 text-sm text-yellow-600" role="menuitem" tabindex="-1" id="user-menu-item-1">Settings</a>
             <a href="#" className="block px-4 py-2 text-sm text-yellow-600" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</a>
           </div> */}
-        </div>
+        
       </div>
     </div>
     {/* <nav className="hidden lg:flex lg:space-x-8 lg:py-2" aria-label="Global">

@@ -16,6 +16,7 @@ const WorkerLeftLayout = () => {
           setUserDetails({
             displayName: user.displayName,
             email: user.email,
+            photoURL:user.photoURL,
           });
         } else {
           // User logged in with email/password
@@ -45,7 +46,7 @@ const WorkerLeftLayout = () => {
         <div className="photo-wrapper p-2">
               <img
                 className="w-20 h-20 rounded-full mx-auto"
-                src="https://www.gravatar.com/avatar/2acfb745ecf9d4dccb3364752d17f65f?s=260&d=mp"
+                src={userDetails?.photoURL || "https://www.gravatar.com/avatar/2acfb745ecf9d4dccb3364752d17f65f?s=260&d=mp"}
                 alt="John Doe"
               />
 
