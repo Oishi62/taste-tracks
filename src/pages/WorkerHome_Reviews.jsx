@@ -9,20 +9,19 @@ const WorkerHome_Reviews = () => {
   return (
     <>
     <WorkerNavbar/>
-    <div className="grid grid-cols-6 gap-2 h-screen">
-    <div class="col-start-1 col-end-3 ..."><WorkerLeftLayout/></div>
-    <div class="col-end-5 col-span-2 overflow-y-auto h-full no-scrollbar">
-      <PostReview/>
-      <WorkerReviewCard/>
-      <WorkerReviewCard/>
-      <WorkerReviewCard/>
-      <WorkerReviewCard/>
-      
+    <div className="grid grid-cols-1 md:grid-cols-6 gap-2 h-screen">
+      <div className="hidden md:block md:col-start-1 md:col-end-3">
+        <WorkerLeftLayout/>
       </div>
-    <div class="col-end-7 col-span-2 ..."><RightLayout/></div>
+      <div className="col-span-1 md:col-end-5 md:col-span-2 overflow-y-auto h-full no-scrollbar">
+        <PostReview/>
+        <WorkerReviewCard/>
+      </div>
+      <div className="hidden md:block md:col-end-7 md:col-span-2">
+        <RightLayout/>
+      </div>
     </div>
-    
-    </>
+  </>
   )
 }
 
