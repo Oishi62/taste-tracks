@@ -48,7 +48,7 @@ const Navbar = () => {
             <div className="flex items-center flex-shrink-0 mr-6">
             <img className="h-8 w-auto sm:h-10" src="web_logo.png" alt="Your Company"/>
             <p className='hidden sm:block px-2 font-playwrite text-xs sm:text-sm md:text-base lg:text-lg'>
-              TasteTracks: Where<br className="md:hidden"/> Food Meets Work
+              TasteTracks: <br className="md:hidden"/>Where Food Meets Work
             </p>
           </div>
 

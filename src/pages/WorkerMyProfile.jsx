@@ -86,22 +86,22 @@ const MyProfile = () => {
       <WorkerNavbar />
       <main className="bg-cream text-charcoal min-h-screen font-sans leading-normal overflow-x-hidden lg:overflow-auto">
         <section className="flex flex-col md:flex-row p-6">
-          <div className="md:w-1/4 bg-gray-100 p-4 shadow rounded-lg">
+          <div className="md:w-1/4 bg-green-100 p-4 shadow rounded-lg hover:shadow-lg hover:shadow-green-500">
             <h2 className="text-xl font-bold text-charcoal mb-6">Options:</h2>
             <button
-              className="w-full bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg mb-4"
+              className="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg mb-4"
               onClick={handleShowProfileDetails}
             >
               {showProfileDetails ? "Hide Profile Details" : "Show Profile Details"}
             </button>
             <button
-              className="w-full bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg mb-4"
+              className="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg mb-4"
               onClick={handleShowProfileForm}
             >
               {showProfileForm ? "Hide Update Form" : "Update Profile Details"}
             </button>
             <button
-              className="w-full bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg mb-4"
+              className="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg mb-4"
               onClick={handlePasswordReset}
             >
               Reset Password
@@ -109,10 +109,10 @@ const MyProfile = () => {
           </div>
           <div className="md:w-3/4 md:pl-6">
             {showProfileForm && (
-              <form className="bg-white p-6 shadow rounded-lg" onSubmit={handleAdditionalInfoSubmit}>
+              <form className="bg-green-100 p-6 shadow rounded-lg hover:shadow-lg hover:shadow-green-500" onSubmit={handleAdditionalInfoSubmit}>
                 <div className="mb-8">
                   <div className="mb-4">
-                    <legend className="text-lg font-semibold mb-2">Profile Information</legend>
+                    <legend className="text-lg font-bold mb-2">Profile Information</legend>
                     <p className="text-xs font-light text-red-600">All fields are required.</p>
                   </div>
                   <div className="mb-4">
@@ -137,9 +137,11 @@ const MyProfile = () => {
                   </div>
                   <div className="mb-4">
                     <label className="block text-sm font-medium mb-2">Profile Picture</label>
-                    <div className="bg-gold hover:bg-gold-dark text-cream mx-auto cursor-pointer relative rounded-lg overflow-hidden">
-                      <input className="opacity-0 absolute inset-0 border-2 border-gray-300" type="file" name="profile_picture" />
-                      <span className="p-3">Upload Profile Picture</span>
+                    <div className="flex items-center">
+                      <div className="group bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:from-green-500 hover:to-green-700 text-white cursor-pointer relative rounded-lg overflow-hidden shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105 w-32">
+                        <input className="opacity-0 absolute inset-0 w-full h-full cursor-pointer" type="file" name="profile_picture" />
+                        <span className="block p-2 text-center text-xs font-semibold">Upload Picture</span>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -201,7 +203,7 @@ const MyProfile = () => {
                 <div className="text-center">
                   <input type="hidden" name="sponsor" value="0" />
                   <input
-                    className="bg-brick hover:bg-brick-dark text-cream-lighter font-bold py-2 px-4 rounded-lg cursor-pointer"
+                    className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-semibold py-2 px-6 rounded-lg cursor-pointer shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105"
                     type="submit"
                     value="Create Profile"
                   />
@@ -210,7 +212,7 @@ const MyProfile = () => {
             )}
 
             {showProfileDetails && !showProfileForm && (
-              <div className="bg-white p-6 shadow rounded-lg">
+              <div className="bg-green-100 p-6 shadow rounded-lg hover:shadow-lg hover:shadow-green-500">
                 <h2 className="text-xl font-bold text-charcoal mb-4">Profile Details</h2>
                 {loading ? (
                 <p>Loading....</p>
