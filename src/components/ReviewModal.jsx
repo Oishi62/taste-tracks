@@ -7,6 +7,7 @@ const ReviewModal = ({ isVisible, onClose }) => {
     const [name, setName] = useState('');
     const [review, setReview] = useState('');
     const [location,setLocation] = useState('');
+    const [likes,setLikes] = useState(0);
     // const [images, setImages] = useState([]);
 
     if (!isVisible) return null;
@@ -15,33 +16,6 @@ const ReviewModal = ({ isVisible, onClose }) => {
         if (e.target.id === 'wrapper') onClose();
     };
 
-    // const handleSubmit = (e) => {
-    //     e.preventDefault();
-    //     // Handle form submission logic here
-    //     console.log({ title, review, images });
-    //     onClose();  // Close the modal after submission
-    // };
-
-    // const handleSubmit = async (e) => {
-    //     e.preventDefault();
-
-    //     try {
-    //         const userId = auth.currentUser.uid;
-
-        
-    //         await setDoc(doc(db, 'customerreviews', userId), {
-    //             name,
-    //             review,
-    //             location
-    //         });
-
-    //         console.log("Review submitted successfully");
-    //     } catch (error) {
-    //         console.error("Error submitting review: ", error);
-    //     }
-
-    //     onClose();
-    // };
     
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -58,6 +32,7 @@ const ReviewModal = ({ isVisible, onClose }) => {
                     name,
                     review,
                     location,
+                    likes,
                     timestamp: new Date() // Optional: Add a timestamp for when the review was submitted
                 })
             });
@@ -71,6 +46,7 @@ const ReviewModal = ({ isVisible, onClose }) => {
                         name,
                         review,
                         location,
+                        likes,
                         timestamp: new Date()
                     }]
                 });
