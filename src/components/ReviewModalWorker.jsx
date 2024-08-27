@@ -3,10 +3,10 @@ import { auth, db } from '../firebase';
 import { doc, setDoc} from 'firebase/firestore';
 import { updateDoc, arrayUnion } from 'firebase/firestore';
 
-const ReviewModal = ({ isVisible, onClose }) => {
+const ReviewModalWorker = ({ isVisible, onClose }) => {
     const [name, setName] = useState('');
     const [review, setReview] = useState('');
-    const [location,setLocation] = useState('');
+    const [location, setLocation] = useState('');
     // const [images, setImages] = useState([]);
 
     if (!isVisible) return null;
@@ -26,13 +26,13 @@ const ReviewModal = ({ isVisible, onClose }) => {
     //     e.preventDefault();
 
     //     try {
-    //         const userId = auth.currentUser.uid;
+    //         const userId = auth.currentUser.uid; // Get the currently authenticated user's ID
 
-        
-    //         await setDoc(doc(db, 'customerreviews', userId), {
+    //         // Create a document with the userId as the document ID
+    //         await setDoc(doc(db, 'workerreviews', userId), {
     //             name,
     //             review,
-    //             location
+    //             location,
     //         });
 
     //         console.log("Review submitted successfully");
@@ -42,15 +42,13 @@ const ReviewModal = ({ isVisible, onClose }) => {
 
     //     onClose();
     // };
-    
+
     const handleSubmit = async (e) => {
         e.preventDefault();
-        
-        let userId;
+    
         try {
-            userId = auth.currentUser.uid;
-            console.log(userId) // Get the currently authenticated user's ID
-            const userDocRef = doc(db, 'customerreviews', userId);
+            const userId = auth.currentUser.uid; // Get the currently authenticated user's ID
+            const userDocRef = doc(db, 'workerreviews', userId);
     
             // Add the new review data to an array called 'reviews' using arrayUnion
             await updateDoc(userDocRef, {
@@ -66,7 +64,7 @@ const ReviewModal = ({ isVisible, onClose }) => {
         } catch (error) {
             // If the document doesn't exist yet, create it with the first review
             if (error.code === 'not-found') {
-                await setDoc(doc(db, 'customerreviews', userId), {
+                await setDoc(doc(db, 'workerreviews', userId), {
                     reviews: [{
                         name,
                         review,
@@ -81,6 +79,7 @@ const ReviewModal = ({ isVisible, onClose }) => {
     
         onClose();
     };
+
 
     const handleImageUpload = (e) => {
         setImages([...e.target.files]);
@@ -124,13 +123,13 @@ const ReviewModal = ({ isVisible, onClose }) => {
                             />
                         </div>
                         <div className="mb-4">
-                            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="location">
+                            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="title">
                                 Location
                             </label>
                             <input
-                                id="location"
+                                type="text"
+                                id="title"
                                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                rows="4"
                                 value={location}
                                 onChange={(e) => setLocation(e.target.value)}
                                 required
@@ -170,4 +169,4 @@ const ReviewModal = ({ isVisible, onClose }) => {
     );
 };
 
-export default ReviewModal;
+export default ReviewModalWorker;

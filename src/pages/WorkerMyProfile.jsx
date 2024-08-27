@@ -109,7 +109,7 @@ const MyProfile = () => {
           </div>
           <div className="md:w-3/4 md:pl-6">
             {showProfileForm && (
-              <form className="bg-green-100 p-6 shadow rounded-lg hover:shadow-lg hover:shadow-green-500" onSubmit={handleAdditionalInfoSubmit}>
+              <form className="bg-white p-6 shadow rounded-lg hover:shadow-lg hover:shadow-green-500" onSubmit={handleAdditionalInfoSubmit}>
                 <div className="mb-8">
                   <div className="mb-4">
                     <legend className="text-lg font-bold mb-2">Profile Information</legend>

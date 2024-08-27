@@ -1,11 +1,16 @@
-import React from 'react'
+import React from 'react';
 
-const WorkerReviewCard = () => {
+const WorkerReviewCard = ({ name, location, review, timestamp }) => {
+  
+  const date = timestamp instanceof Date ? timestamp : new Date(timestamp);
+  // Format the date to display only the date part
+  const formattedDate = date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+
   return (
-   
-    <>
-   
-
     <div className="relative flex flex-col justify-center pt-6 sm:pt-12 z-10">
       <div className="bg-gray-100 w-full rounded-lg shadow-md flex flex-col transition-all overflow-hidden hover:shadow-2xl">
         
@@ -17,7 +22,7 @@ const WorkerReviewCard = () => {
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                 </svg>
-                7 March, 2022
+                {formattedDate}
               </span>
               <span>
                 <a href="" className="hover:text-orange-600">
@@ -36,10 +41,13 @@ const WorkerReviewCard = () => {
         {/* Bottom section */}
         <div className="p-6">
           <h3 className="mb-4 font-semibold text-2xl">
-            <a href="" className="transition-all text-blue-900 hover:text-blue-600">Magic Wok</a>
+            {/* Name as a hyperlink */}
+            <a href={location} className="transition-all text-blue-900 hover:text-blue-600" target="_blank" rel="noopener noreferrer">
+              {name}
+            </a>
           </h3>
           <p className="text-sky-800 text-sm mb-0">
-            It is a horrible restaurant.
+            {review}
           </p>
         </div>
         <div className="mt-auto">
@@ -47,11 +55,7 @@ const WorkerReviewCard = () => {
         </div>
       </div>
     </div>
-  
-    
-    </>
-    
-  )
-}
+  );
+};
 
-export default WorkerReviewCard
+export default WorkerReviewCard;
