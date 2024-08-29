@@ -171,6 +171,7 @@ const MyProfile = () => {
                       name="name"
                       placeholder="John Doe"
                       onChange={(e) => setProfileName(e.target.value)}
+                      required
                     />
                   </div>
                   <div className="mb-4">
@@ -181,6 +182,7 @@ const MyProfile = () => {
                       name="phone"
                       placeholder="(555) 555-5555"
                       onChange={(e) => setPhone(e.target.value)}
+                      required
                     />
                   </div>
                   {/* <div className="mb-6">
@@ -202,6 +204,7 @@ const MyProfile = () => {
                           type="file"
                           name="profile_picture"
                           onChange={handleProfilePictureChange}
+                          required
                         />
                         <span className="block p-2 text-center text-xs font-semibold">Upload Picture</span>
                       </div>
@@ -226,6 +229,7 @@ const MyProfile = () => {
                           type="text"
                           name="facebook"
                           onChange={(e) => setFacebook(e.target.value)}
+                          required
                         />
                       </div>
                     </div>
@@ -237,6 +241,7 @@ const MyProfile = () => {
                           type="text"
                           name="twitter"
                           onChange={(e) => setTwitter(e.target.value)}
+                          required
                         />
                       </div>
                     </div>
@@ -248,6 +253,7 @@ const MyProfile = () => {
                           type="text"
                           name="instagram"
                           onChange={(e) => setInstagram(e.target.value)}
+                          required
                         />
                       </div>
                     </div>
@@ -264,6 +270,7 @@ const MyProfile = () => {
                     placeholder="Tell us about yourself."
                     rows="6"
                     onChange={(e) => setDescription(e.target.value)}
+                    required
                   ></textarea>
                 </div>
 
@@ -279,25 +286,67 @@ const MyProfile = () => {
             )}
 
             {showProfileDetails && !showProfileForm && (
-              <div className="bg-green-100 p-6 shadow rounded-lg hover:shadow-lg hover:shadow-green-500">
-                <h2 className="text-xl font-bold text-charcoal mb-4">Profile Details</h2>
-                {loading ? (
-                  <p>Loading....</p>
-                ) : userDetails ? (
-                  <>
-                    <p><strong>Name:</strong> {userDetails.Username}</p>
-                    <p><strong>Email:</strong> {userDetails.email}</p>
-                    <p><strong>Phone:</strong> {userDetails.Phone}</p>
-                    <p><strong>Instagram:</strong> {userDetails.Instagram}</p>
-                    <p><strong>Twitter:</strong> {userDetails.Twitter}</p>
-                    <p><strong>Facebook:</strong> {userDetails.Facebook}</p>
-                    <p><strong>Description:</strong> {userDetails.Description}</p>
-                  </>
-                ) : (
-                  <p>No user details available</p>
-                )}
-
-              </div>
+              <div className="bg-green-100 p-8 shadow-lg rounded-lg hover:shadow-xl transition-shadow duration-300 hover:shadow-green-500">
+              <h2 className="text-2xl font-bold text-green-700 mb-6">Profile Details</h2>
+              {loading ? (
+                <p className="text-gray-500">Loading...</p>
+              ) : userDetails ? (
+                <div className="space-y-4">
+                  <div className="flex items-center">
+                    <p className="text-lg font-semibold text-gray-800">Name:</p>
+                    <p className="ml-2 text-gray-700">{userDetails.Username}</p>
+                  </div>
+                  <div className="flex items-center">
+                    <p className="text-lg font-semibold text-gray-800">Email:</p>
+                    <p className="ml-2 text-gray-700">{userDetails.email}</p>
+                  </div>
+                  <div className="flex items-center">
+                    <p className="text-lg font-semibold text-gray-800">Phone:</p>
+                    <p className="ml-2 text-gray-700">{userDetails.Phone}</p>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <p className="text-lg font-semibold text-gray-800">Instagram:</p>
+                    <a
+                      href={userDetails.Instagram}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-500 hover:text-blue-700"
+                    >
+                      <i className="fab fa-instagram"></i> {userDetails.Instagram}
+                    </a>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <p className="text-lg font-semibold text-gray-800">Twitter:</p>
+                    <a
+                      href={userDetails.Twitter}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-400 hover:text-blue-600"
+                    >
+                      <i className="fab fa-twitter"></i> {userDetails.Twitter}
+                    </a>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <p className="text-lg font-semibold text-gray-800">Facebook:</p>
+                    <a
+                      href={userDetails.Facebook}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-600 hover:text-blue-800"
+                    >
+                      <i className="fab fa-facebook"></i> {userDetails.Facebook}
+                    </a>
+                  </div>
+                  <div>
+                    <p className="text-lg font-semibold text-gray-800">Description:</p>
+                    <p className="mt-2 text-gray-700">{userDetails.Description}</p>
+                  </div>
+                </div>
+              ) : (
+                <p className="text-gray-500">No user details available</p>
+              )}
+            </div>
+            
             )}
           </div>
         </section>

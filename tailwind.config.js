@@ -33,7 +33,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        playwrite: ['"Playwrite DK Uloopet"', 'cursive'],
+        playwrite: ['Poppins', 'cursive'],
       },
       colors: {
         'custom-light-green': '#cdffcd',

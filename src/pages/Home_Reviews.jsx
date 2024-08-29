@@ -33,6 +33,7 @@ const Home_Reviews = () => {
     };
 
     fetchReviews();
+    
   }, []);
 
   return (
