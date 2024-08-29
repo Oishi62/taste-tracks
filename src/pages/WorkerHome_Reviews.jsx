@@ -49,6 +49,7 @@ const WorkerHome_Reviews = () => {
               location={review.location}
               review={review.review}
               timestamp={review.timestamp?.toDate().toLocaleString()} // Convert Firestore timestamp to readable format
+              images={review.images || []}
             />
           ))}
       </div>

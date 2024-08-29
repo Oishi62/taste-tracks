@@ -1,6 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { db } from '../firebase'; // Ensure you have your Firebase config file imported correctly
+import { doc, updateDoc } from 'firebase/firestore';
 
-const WorkerReviewCard = ({ name, location, review, timestamp }) => {
+const WorkerReviewCard = ({ name, location, review, timestamp, images}) => {
+
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
   
   const date = timestamp instanceof Date ? timestamp : new Date(timestamp);
   // Format the date to display only the date part
@@ -9,6 +14,14 @@ const WorkerReviewCard = ({ name, location, review, timestamp }) => {
     month: 'long',
     day: 'numeric',
   });
+
+  const nextImage = () => {
+    setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+  };
+
+  const prevImage = () => {
+    setCurrentImageIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
+  };
 
   return (
     <div className="relative flex flex-col justify-center pt-6 sm:pt-12 z-10">
@@ -50,9 +63,21 @@ const WorkerReviewCard = ({ name, location, review, timestamp }) => {
             {review}
           </p>
         </div>
-        <div className="mt-auto">
-          <img src="https://picsum.photos/400/300" alt="" className="w-full h-48 object-cover"/>
-        </div>
+        {images && images.length > 0 && (
+          <div className="relative">
+            <img src={images[currentImageIndex]} alt={`Review image ${currentImageIndex + 1}`} className="w-full h-48 object-cover"/>
+            {images.length > 1 && (
+              <>
+                <button onClick={prevImage} className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-r">
+                  &lt;
+                </button>
+                <button onClick={nextImage} className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-l">
+                  &gt;
+                </button>
+              </>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

@@ -20,7 +20,7 @@ const WorkerNavbar = () => {
           });
         } else {
           // User logged in with email/password
-          const docRef = doc(db, "Users", user.uid);
+          const docRef = doc(db, "Workers", user.uid);
           const docSnap = await getDoc(docRef);
           if (docSnap.exists()) {
             setUserDetails(docSnap.data());
@@ -84,7 +84,7 @@ const WorkerNavbar = () => {
           </svg>
         </button> */}
 
-<img className="w-12 h-12 rounded-full" src={userDetails?.photoURL || "https://www.gravatar.com/avatar/2acfb745ecf9d4dccb3364752d17f65f?s=260&d=mp"} alt="" />
+<img className="w-12 h-12 rounded-full" src={userDetails?.photoURL} alt="" />
 
          
           {/* <div className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">

@@ -1,8 +1,10 @@
 import PasswordReset from '../components/PasswordReset';
-import React, { useState,useEffect } from 'react';
-import { auth, db } from '../firebase';
-import { doc, updateDoc,getDoc } from 'firebase/firestore';
+import React, { useState, useEffect } from 'react';
+import { auth, db, storage } from '../firebase';
+import { doc, updateDoc, getDoc } from 'firebase/firestore';
 import { sendPasswordResetEmail } from 'firebase/auth';
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { updateProfile } from 'firebase/auth';
 import WorkerNavbar from '../components/WorkerNavbar';
 
 const MyProfile = () => {
@@ -17,18 +19,35 @@ const MyProfile = () => {
   const [showProfileForm, setShowProfileForm] = useState(false);
   const [userDetails, setUserDetails] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [profilePicture, setProfilePicture] = useState(null);
+
+  const handleProfilePictureChange = (e) => {
+    if (e.target.files[0]) {
+      setProfilePicture(e.target.files[0]);
+    }
+  };
+
+  const uploadProfilePicture = async () => {
+    if (profilePicture && auth.currentUser) {
+      const fileRef = ref(storage, `profilePicturesWorker/${auth.currentUser.uid}`);
+      await uploadBytes(fileRef, profilePicture);
+      const downloadURL = await getDownloadURL(fileRef);
+      return downloadURL;
+    }
+    return null;
+  };
 
   const fetchUserData = async () => {
     auth.onAuthStateChanged(async (user) => {
       console.log(user);
       if (user) {
-          // User logged in with email/password
-          const docRef = doc(db, "Workers", user.uid);
-          const docSnap = await getDoc(docRef);
-          if (docSnap.exists()) {
-            setUserDetails(docSnap.data());
-          }
-        
+        // User logged in with email/password
+        const docRef = doc(db, "Workers", user.uid);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          setUserDetails(docSnap.data());
+        }
+
       }
       setLoading(false);
     });
@@ -40,20 +59,51 @@ const MyProfile = () => {
 
 
 
+  // const handleAdditionalInfoSubmit = async (e) => {
+  //   e.preventDefault();
+  //   if (auth.currentUser) {
+  //     const user = auth.currentUser;
+  //     const userDocRef = doc(db, "Workers", user.uid);
+  //     await updateDoc(userDocRef, {
+  //       Name: profilename,
+  //       Phone: phone,
+  //       Facebook: facebook,
+  //       Twitter: twitter,
+  //       Instagram: instagram,
+  //       Description: description
+  //     });
+  //     alert("User Information added successfully");
+  //   }
+  // };
+
   const handleAdditionalInfoSubmit = async (e) => {
     e.preventDefault();
     if (auth.currentUser) {
       const user = auth.currentUser;
       const userDocRef = doc(db, "Workers", user.uid);
-      await updateDoc(userDocRef, {
+
+      let profilePictureURL = null;
+      if (profilePicture) {
+        profilePictureURL = await uploadProfilePicture();
+      }
+
+      const updatedData = {
         Name: profilename,
         Phone: phone,
         Facebook: facebook,
         Twitter: twitter,
         Instagram: instagram,
-        Description: description
-      });
-      alert("User Information added successfully");
+        Description: description,
+      };
+
+      if (profilePictureURL) {
+        updatedData.photoURL = profilePictureURL;
+        await updateProfile(user, { photoURL: profilePictureURL });
+      }
+
+      await updateDoc(userDocRef, updatedData);
+      alert("User Information updated successfully");
+      fetchUserData(); // Refresh user data
     }
   };
 
@@ -135,13 +185,31 @@ const MyProfile = () => {
                       onChange={(e) => setPhone(e.target.value)}
                     />
                   </div>
-                  <div className="mb-4">
+                  {/* <div className="mb-4">
                     <label className="block text-sm font-medium mb-2">Profile Picture</label>
                     <div className="flex items-center">
                       <div className="group bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:from-green-500 hover:to-green-700 text-white cursor-pointer relative rounded-lg overflow-hidden shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105 w-32">
                         <input className="opacity-0 absolute inset-0 w-full h-full cursor-pointer" type="file" name="profile_picture" />
                         <span className="block p-2 text-center text-xs font-semibold">Upload Picture</span>
                       </div>
+                    </div>
+                  </div> */}
+
+                  <div className="mb-6">
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Profile Picture</label>
+                    <div className="flex items-center">
+                      <div className="group bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:from-green-500 hover:to-green-700 text-white cursor-pointer relative rounded-lg overflow-hidden shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105 w-32">
+                        <input
+                          className="opacity-0 absolute inset-0 w-full h-full cursor-pointer"
+                          type="file"
+                          name="profile_picture"
+                          onChange={handleProfilePictureChange}
+                        />
+                        <span className="block p-2 text-center text-xs font-semibold">Upload Picture</span>
+                      </div>
+                      {profilePicture && (
+                        <span className="ml-3 text-sm text-gray-600">{profilePicture.name}</span>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -215,20 +283,20 @@ const MyProfile = () => {
               <div className="bg-green-100 p-6 shadow rounded-lg hover:shadow-lg hover:shadow-green-500">
                 <h2 className="text-xl font-bold text-charcoal mb-4">Profile Details</h2>
                 {loading ? (
-                <p>Loading....</p>
-              ) : userDetails ? (
-                <>
-                <p><strong>Name:</strong> {userDetails.Username}</p>
-                <p><strong>Email:</strong> {userDetails.email}</p>
-                <p><strong>Phone:</strong> {userDetails.Phone}</p>
-                <p><strong>Instagram:</strong> {userDetails.Instagram}</p>
-                <p><strong>Twitter:</strong> {userDetails.Twitter}</p>
-                <p><strong>Facebook:</strong> {userDetails.Facebook}</p>
-                <p><strong>Description:</strong> {userDetails.Description}</p>
-                </>
-              ) : (
-                <p>No user details available</p>
-              )}
+                  <p>Loading....</p>
+                ) : userDetails ? (
+                  <>
+                    <p><strong>Name:</strong> {userDetails.Username}</p>
+                    <p><strong>Email:</strong> {userDetails.email}</p>
+                    <p><strong>Phone:</strong> {userDetails.Phone}</p>
+                    <p><strong>Instagram:</strong> {userDetails.Instagram}</p>
+                    <p><strong>Twitter:</strong> {userDetails.Twitter}</p>
+                    <p><strong>Facebook:</strong> {userDetails.Facebook}</p>
+                    <p><strong>Description:</strong> {userDetails.Description}</p>
+                  </>
+                ) : (
+                  <p>No user details available</p>
+                )}
               </div>
             )}
           </div>

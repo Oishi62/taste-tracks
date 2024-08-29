@@ -44,12 +44,12 @@ const WorkerLeftLayout = () => {
         <div className="w-64"> {/* Fixed width of 16rem */}
         <div className="bg-gray-100 shadow-xl rounded-lg py-3  bg-[url('profile_bg1.jpeg')] bg-cover bg-no-repeat">
         <div className="photo-wrapper p-2">
+              <br />
               <img
-                className="w-20 h-20 rounded-full mx-auto"
-                src={userDetails?.photoURL || "https://www.gravatar.com/avatar/2acfb745ecf9d4dccb3364752d17f65f?s=260&d=mp"}
-                alt="John Doe"
+                className="w-20 h-20 rounded-full mx-auto object-cover"
+                src={userDetails?.photoURL}
+                alt="Profile"
               />
-
             </div>
 
             <div className="p-2">

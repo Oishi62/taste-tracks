@@ -3,7 +3,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
-import { db } from '../firebase'; // Import your firebase config
+import { auth,db } from '../firebase'; // Import your firebase config
 import Navbar from '../components/Navbar';
 import PostReview from '../components/PostReview';
 import LeftLayout from '../components/LeftLayout';
@@ -47,13 +47,14 @@ const Home_Reviews = () => {
           {reviews.map((review, index) => (
             <ReviewCard
               key={index}
-              docId={review.docId} // Pass the document ID
+              docId={auth.currentUser.uid} // Pass the document ID
               reviewIndex={review.index} // Pass the review index
               name={review.name}
               location={review.location}
               review={review.review}
               timestamp={review.timestamp?.toDate().toLocaleString()} // Convert Firestore timestamp to readable format
               initialLikes={review.likes || 0}
+              images={review.images || []} 
             />
           ))}
         </div>

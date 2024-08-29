@@ -1,9 +1,11 @@
 import Navbar from '../components/Navbar';
 import PasswordReset from '../components/PasswordReset';
 import React, { useState, useEffect } from 'react';
-import { auth, db } from '../firebase';
+import { auth, db, storage } from '../firebase';
 import { doc, updateDoc, getDoc } from 'firebase/firestore';
 import { sendPasswordResetEmail } from 'firebase/auth';
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { updateProfile } from 'firebase/auth';
 
 const MyProfile = () => {
   const [showModal, setShowModal] = useState(false);
@@ -17,6 +19,23 @@ const MyProfile = () => {
   const [showProfileForm, setShowProfileForm] = useState(false);
   const [userDetails, setUserDetails] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [profilePicture, setProfilePicture] = useState(null);
+
+  const handleProfilePictureChange = (e) => {
+    if (e.target.files[0]) {
+      setProfilePicture(e.target.files[0]);
+    }
+  };
+
+  const uploadProfilePicture = async () => {
+    if (profilePicture && auth.currentUser) {
+      const fileRef = ref(storage, `profilePictures/${auth.currentUser.uid}`);
+      await uploadBytes(fileRef, profilePicture);
+      const downloadURL = await getDownloadURL(fileRef);
+      return downloadURL;
+    }
+    return null;
+  };
 
   const fetchUserData = async () => {
     auth.onAuthStateChanged(async (user) => {
@@ -38,20 +57,51 @@ const MyProfile = () => {
     fetchUserData();
   }, []);
 
+  // const handleAdditionalInfoSubmit = async (e) => {
+  //   e.preventDefault();
+  //   if (auth.currentUser) {
+  //     const user = auth.currentUser;
+  //     const userDocRef = doc(db, "Users", user.uid);
+  //     await updateDoc(userDocRef, {
+  //       Name: profilename,
+  //       Phone: phone,
+  //       Facebook: facebook,
+  //       Twitter: twitter,
+  //       Instagram: instagram,
+  //       Description: description
+  //     });
+  //     alert("User Information added successfully");
+  //   }
+  // };
+
   const handleAdditionalInfoSubmit = async (e) => {
     e.preventDefault();
     if (auth.currentUser) {
       const user = auth.currentUser;
       const userDocRef = doc(db, "Users", user.uid);
-      await updateDoc(userDocRef, {
+
+      let profilePictureURL = null;
+      if (profilePicture) {
+        profilePictureURL = await uploadProfilePicture();
+      }
+
+      const updatedData = {
         Name: profilename,
         Phone: phone,
         Facebook: facebook,
         Twitter: twitter,
         Instagram: instagram,
-        Description: description
-      });
-      alert("User Information added successfully");
+        Description: description,
+      };
+
+      if (profilePictureURL) {
+        updatedData.photoURL = profilePictureURL;
+        await updateProfile(user, { photoURL: profilePictureURL });
+      }
+
+      await updateDoc(userDocRef, updatedData);
+      alert("User Information updated successfully");
+      fetchUserData(); // Refresh user data
     }
   };
 
@@ -133,13 +183,31 @@ const MyProfile = () => {
                       onChange={(e) => setPhone(e.target.value)}
                     />
                   </div>
-                  <div className="mb-6">
+                  {/* <div className="mb-6">
                     <label className="block text-sm font-medium text-gray-700 mb-2">Profile Picture</label>
                     <div className="flex items-center">
                       <div className="group bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:from-green-500 hover:to-green-700 text-white cursor-pointer relative rounded-lg overflow-hidden shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105 w-32">
                         <input className="opacity-0 absolute inset-0 w-full h-full cursor-pointer" type="file" name="profile_picture" />
                         <span className="block p-2 text-center text-xs font-semibold">Upload Picture</span>
                       </div>
+                    </div>
+                  </div> */}
+
+                  <div className="mb-6">
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Profile Picture</label>
+                    <div className="flex items-center">
+                      <div className="group bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:from-green-500 hover:to-green-700 text-white cursor-pointer relative rounded-lg overflow-hidden shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105 w-32">
+                        <input
+                          className="opacity-0 absolute inset-0 w-full h-full cursor-pointer"
+                          type="file"
+                          name="profile_picture"
+                          onChange={handleProfilePictureChange}
+                        />
+                        <span className="block p-2 text-center text-xs font-semibold">Upload Picture</span>
+                      </div>
+                      {profilePicture && (
+                        <span className="ml-3 text-sm text-gray-600">{profilePicture.name}</span>
+                      )}
                     </div>
                   </div>
 

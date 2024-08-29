@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { auth, db } from '../firebase';
-import { doc, setDoc} from 'firebase/firestore';
-import { updateDoc, arrayUnion } from 'firebase/firestore';
+import { auth, db, storage } from '../firebase';
+import { doc, setDoc, updateDoc, arrayUnion } from 'firebase/firestore';
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 
 const ReviewModalWorker = ({ isVisible, onClose }) => {
     const [name, setName] = useState('');
     const [review, setReview] = useState('');
     const [location, setLocation] = useState('');
-    // const [images, setImages] = useState([]);
+    const [images, setImages] = useState([]);
 
     if (!isVisible) return null;
 
@@ -15,75 +15,97 @@ const ReviewModalWorker = ({ isVisible, onClose }) => {
         if (e.target.id === 'wrapper') onClose();
     };
 
-    // const handleSubmit = (e) => {
-    //     e.preventDefault();
-    //     // Handle form submission logic here
-    //     console.log({ title, review, images });
-    //     onClose();  // Close the modal after submission
-    // };
+    const handleImageUpload = (e) => {
+        setImages([...e.target.files]);
+    };
+
+    const uploadImagesToStorage = async (userId) => {
+        const imageUrls = [];
+        for (let i = 0; i < images.length; i++) {
+            const image = images[i];
+            const imageRef = ref(storage, `reviewsWorker/${userId}/${Date.now()}-${image.name}`);
+            await uploadBytes(imageRef, image);
+            const url = await getDownloadURL(imageRef);
+            imageUrls.push(url);
+        }
+        return imageUrls;
+    };
 
     // const handleSubmit = async (e) => {
     //     e.preventDefault();
-
+    
     //     try {
     //         const userId = auth.currentUser.uid; // Get the currently authenticated user's ID
-
-    //         // Create a document with the userId as the document ID
-    //         await setDoc(doc(db, 'workerreviews', userId), {
-    //             name,
-    //             review,
-    //             location,
+    //         const userDocRef = doc(db, 'workerreviews', userId);
+    
+    //         // Add the new review data to an array called 'reviews' using arrayUnion
+    //         await updateDoc(userDocRef, {
+    //             reviews: arrayUnion({
+    //                 name,
+    //                 review,
+    //                 location,
+    //                 timestamp: new Date() // Optional: Add a timestamp for when the review was submitted
+    //             })
     //         });
-
+    
     //         console.log("Review submitted successfully");
     //     } catch (error) {
-    //         console.error("Error submitting review: ", error);
+    //         // If the document doesn't exist yet, create it with the first review
+    //         if (error.code === 'not-found') {
+    //             await setDoc(doc(db, 'workerreviews', userId), {
+    //                 reviews: [{
+    //                     name,
+    //                     review,
+    //                     location,
+    //                     timestamp: new Date()
+    //                 }]
+    //             });
+    //         } else {
+    //             console.error("Error submitting review: ", error);
+    //         }
     //     }
-
+    
     //     onClose();
     // };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-    
+
+        let userId;
         try {
-            const userId = auth.currentUser.uid; // Get the currently authenticated user's ID
+            userId = auth.currentUser.uid;
             const userDocRef = doc(db, 'workerreviews', userId);
-    
-            // Add the new review data to an array called 'reviews' using arrayUnion
+
+            const imageUrls = await uploadImagesToStorage(userId);
+
+            const newReview = {
+                name,
+                review,
+                location,
+                images: imageUrls,
+                timestamp: new Date()
+            };
+
             await updateDoc(userDocRef, {
-                reviews: arrayUnion({
-                    name,
-                    review,
-                    location,
-                    timestamp: new Date() // Optional: Add a timestamp for when the review was submitted
-                })
+                reviews: arrayUnion(newReview)
             });
-    
+
             console.log("Review submitted successfully");
         } catch (error) {
-            // If the document doesn't exist yet, create it with the first review
             if (error.code === 'not-found') {
                 await setDoc(doc(db, 'workerreviews', userId), {
-                    reviews: [{
-                        name,
-                        review,
-                        location,
-                        timestamp: new Date()
-                    }]
+                    reviews: [newReview]
                 });
             } else {
                 console.error("Error submitting review: ", error);
             }
         }
-    
+
         onClose();
     };
 
 
-    const handleImageUpload = (e) => {
-        setImages([...e.target.files]);
-    };
+    
 
     return (
         <div
