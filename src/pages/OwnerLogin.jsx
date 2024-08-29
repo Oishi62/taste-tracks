@@ -1,29 +1,48 @@
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import {React,useState} from 'react';
+import { useNavigate } from 'react-router-dom';
 import { auth } from '../firebase';
+import { ToastContainer, toast } from 'react-toastify';
 
 const OwnerLogin = () => {
 
-    const [email,setEmail]=useState("");
-    const [password,setPassword]=useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
-  const handleSubmit=async(e)=>{
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await signInWithEmailAndPassword(auth,email,password);
+      await signInWithEmailAndPassword(auth, email, password);
       console.log("User Logged In Successfully");
-      window.location.href="/ownerhomepage";
-      alert("Login Successfull!");
-
+      toast.success("Login Successful!", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+      });
+      setTimeout(() => {
+        navigate('/ownerhomepage');
+      }, 2000);
     } catch (error) {
       console.log(error.message);
-      alert("Invalid Email or Password");
+      toast.error("Invalid Email or Password", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+      });
     }
   };
 
 
   return (
     <>
+    <ToastContainer />
     <div className="flex min-h-screen items-center justify-center bg-gray-100 bg-[url('signupbg.png')] bg-cover bg-no-repeat p-4">
     <div className="bg-white bg-opacity-30 rounded-lg shadow-lg p-4 sm:p-6 md:p-8 lg:p-12 w-full max-w-4xl flex flex-col lg:flex-row items-center">
       {/* SVG and Welcome Text Container */}

@@ -4,10 +4,11 @@ import SignOutButton from './SignOutButton'
 import { auth, db } from '../firebase';
 import { doc, getDoc } from 'firebase/firestore';
 
-const WorkerNavbar = () => {
+const WorkerNavbar = ({ onSearch }) => {
 
   const [userDetails, setUserDetails] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState('');
 
   const fetchUserData = async () => {
     auth.onAuthStateChanged(async (user) => {
@@ -35,6 +36,11 @@ const WorkerNavbar = () => {
     fetchUserData();
   }, []);
 
+  const handleSearchChange = (e) => {
+    const value = e.target.value;
+    setSearchTerm(value);
+    onSearch(value);
+  };
 
   return (
 <>
@@ -48,18 +54,26 @@ const WorkerNavbar = () => {
         </div>
       </div>
       <div className="relative z-0 flex flex-1 items-center justify-center px-2 sm:absolute sm:inset-0">
-        <div className="w-full sm:max-w-xs">
-          <label for="search" className="sr-only">Search</label>
-          <div className="relative">
-            <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-              <svg className="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clip-rule="evenodd" />
-              </svg>
+          <div className="w-full max-w-xs">
+            <label htmlFor="search" className="sr-only">Search</label>
+            <div className="relative">
+              <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                <svg className="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fillRule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clipRule="evenodd" />
+                </svg>
+              </div>
+              <input 
+                id="search" 
+                name="search" 
+                className="block w-full rounded-md border border-gray-400 py-1.5 pl-10 pr-3 text-yellow-300 placeholder:text-black focus:bg-white focus:text-gray-900 focus:ring-0 focus:placeholder:text-gray-500 sm:text-sm sm:leading-6" 
+                placeholder="Type Restaurant Name" 
+                type="search" 
+                value={searchTerm}
+                onChange={handleSearchChange}
+              />
             </div>
-            <input id="search" name="search" className="block w-full rounded-md border border-gray-400 py-1.5 pl-10 pr-3 text-yellow-300 placeholder:text-black focus:bg-white focus:text-gray-900 focus:ring-0 focus:placeholder:text-gray-500 sm:text-sm sm:leading-6" placeholder="Search" type="search"/>
           </div>
         </div>
-      </div>
       <div className="relative z-10 flex items-center lg:hidden">
         <button type="button" className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
           <span className="absolute -inset-0.5"></span>
@@ -108,7 +122,7 @@ const WorkerNavbar = () => {
     <a href="#" className="text-black hover:scale-110 inline-flex items-center rounded-md py-2 px-3 text-sm font-medium">Sign Out</a> */}
     <Link to="/workerhome_reviews" className="text-black hover:scale-110 inline-flex items-center rounded-md py-2 px-3 text-sm font-medium" aria-current="page">Home</Link>
       <Link to="/workermyprofile" className="hover:scale-110 inline-flex items-center rounded-md py-2 px-3 text-sm font-medium">My Profile</Link>
-      <Link to="/about" className="text-black hover:scale-110 inline-flex items-center rounded-md py-2 px-3 text-sm font-medium">About</Link>
+      <Link to="/workerabout" className="text-black hover:scale-110 inline-flex items-center rounded-md py-2 px-3 text-sm font-medium">About</Link>
       {/* <Link to="/" className="text-black hover:scale-110 inline-flex items-center rounded-md py-2 px-3 text-sm font-medium">Sign Out</Link> */}
       <SignOutButton />
   </nav>

@@ -10,6 +10,8 @@ import WorkerLeftLayout from '../components/WorkerLeftLayout'
 const WorkerHome_Reviews = () => {
 
   const [reviews, setReviews] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
+
 
   useEffect(() => {
     const fetchReviews = async () => {
@@ -20,7 +22,7 @@ const WorkerHome_Reviews = () => {
         querySnapshot.forEach((doc) => {
           const userReviews = doc.data().reviews;
           if (userReviews && userReviews.length > 0) {
-            allReviews.push(...userReviews); // Spread each user's reviews into the array
+            allReviews.push(...userReviews.map(review => ({...review, docId: doc.id})));
           }
         });
 
@@ -33,32 +35,40 @@ const WorkerHome_Reviews = () => {
     fetchReviews();
   }, []);
 
+  const handleSearch = (term) => {
+    setSearchTerm(term);
+  };
+
+  const filteredReviews = reviews.filter(review => 
+    review.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <>
-    <WorkerNavbar/>
-    <div className="grid grid-cols-1 md:grid-cols-6 gap-2 h-screen">
-      <div className="hidden md:block md:col-start-1 md:col-end-3">
-        <WorkerLeftLayout/>
-      </div>
-      <div className="col-span-1 md:col-end-5 md:col-span-2 overflow-y-auto h-full no-scrollbar">
-        <PostReviewWorker/>
-        {reviews.map((review, index) => (
+      <WorkerNavbar onSearch={handleSearch} />
+      <div className="grid grid-cols-1 md:grid-cols-6 gap-2 h-screen">
+        <div className="hidden md:block md:col-start-1 md:col-end-3">
+          <WorkerLeftLayout />
+        </div>
+        <div className="col-span-1 md:col-end-5 md:col-span-2 overflow-y-auto h-full no-scrollbar">
+          <PostReviewWorker />
+          {filteredReviews.map((review, index) => (
             <WorkerReviewCard
               key={index}
               name={review.name}
               location={review.location}
               review={review.review}
-              timestamp={review.timestamp?.toDate().toLocaleString()} // Convert Firestore timestamp to readable format
+              timestamp={review.timestamp?.toDate().toLocaleString()}
               images={review.images || []}
             />
           ))}
+        </div>
+        <div className="hidden md:block md:col-end-7 md:col-span-2">
+          <RightLayout />
+        </div>
       </div>
-      <div className="hidden md:block md:col-end-7 md:col-span-2">
-        <RightLayout/>
-      </div>
-    </div>
-  </>
-  )
+    </>
+  );
 }
 
 export default WorkerHome_Reviews
