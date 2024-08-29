@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import SignOutButton from './SignOutButton'
 import { auth, db } from '../firebase';
 import { doc, getDoc } from 'firebase/firestore';
+import user_icon from '../../public/user_icon.svg'
 
 const Navbar = ({ onSearch }) => {
 
@@ -82,7 +83,7 @@ const Navbar = ({ onSearch }) => {
 
             <div className="hidden lg:relative lg:z-10 lg:ml-4 lg:flex lg:items-center">
 
-            <img className="w-12 h-12 rounded-full" src={userDetails?.photoURL} alt="" />
+            <img className="w-12 h-12 rounded-full" src={userDetails?.photoURL || user_icon} alt="" />
               {/* <div className="relative ml-4 flex-shrink-0">
                 <div>
                   <button type="button" className="relative flex rounded-full bg-gray-800 text-sm text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
@@ -114,20 +115,21 @@ const Navbar = ({ onSearch }) => {
 
         <nav className="lg:hidden" aria-label="Global" id="mobile-menu">
           <div className="space-y-1 px-2 pb-3 pt-2">
-            <Link to="/" className="block rounded-md py-2 px-3 text-base font-medium hover:bg-gray-700 hover:text-white" aria-current="page">Home</Link>
-            <Link to="/myprofile" className="block rounded-md py-2 px-3 text-base font-medium hover:bg-gray-700 hover:text-white">My Profile</Link>
-            <Link to="/about" className="block rounded-md py-2 px-3 text-base font-medium hover:bg-gray-700 hover:text-white">About</Link>
-            <div className="mt-2">
-              <SignOutButton />
-            </div>
+            <Link to="/home_reviews" className="text-black hover:scale-110 inline-flex items-center rounded-md py-2 px-3 text-sm font-medium" aria-current="page">Home</Link>
+            <Link to="/myprofile" className="hover:scale-110 inline-flex items-center rounded-md py-2 px-3 text-sm font-medium">My Profile</Link>
+            <Link to="/about" className="text-black hover:scale-110 inline-flex items-center rounded-md py-2 px-3 text-sm font-medium">About</Link>
+            <SignOutButton />
           </div>
+
           <div className="border-t border-gray-700 pb-3 pt-4">
             <div className="flex items-center px-4">
               <div className="flex-shrink-0">
-              <img className="w-12 h-12 rounded-full" src={userDetails?.photoURL} alt="" />  
-                          </div>
+                <img className="w-12 h-12 rounded-full" src={userDetails?.photoURL || user_icon} alt="Profile" />
+              </div>
             </div>
           </div>
+
+
         </nav>
 
 

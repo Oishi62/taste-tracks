@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { auth, db } from '../firebase';
 import { doc, getDoc } from 'firebase/firestore';
 import { collection, getDocs} from "firebase/firestore";
+import user_icon from '../../public/user_icon.svg'
 
 const LeftLayout = () => {
   const [userDetails, setUserDetails] = useState(null);
@@ -174,7 +175,7 @@ const LeftLayout = () => {
               <br />
               <img
                 className="w-20 h-20 rounded-full mx-auto object-cover"
-                src={userDetails?.photoURL || "https://www.gravatar.com/avatar/2acfb745ecf9d4dccb3364752d17f65f?s=260&d=mp"}
+                src={userDetails?.photoURL || user_icon}
                 alt="Profile"
               />
             </div>
