@@ -1,46 +1,74 @@
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { auth,db } from '../firebase';
-import { setDoc,doc } from 'firebase/firestore';
+import { auth, db } from '../firebase';
+import { setDoc, doc } from 'firebase/firestore';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const PremuimSignup = () => {
 
 
-  const [email,setEmail]=useState("");
-  const [password,setPassword]=useState("");
-  const [username,setUsername]=useState("");
+//   const [email,setEmail]=useState("");
+//   const [password,setPassword]=useState("");
+//   const [username,setUsername]=useState("");
 
-  const handleRegister = async(e) => {
-    e.preventDefault();
-    try {
-      await  createUserWithEmailAndPassword(auth,email,password);
-      const user=auth.currentUser;
-      console.log(user);
-      if(user){
-        await setDoc(doc(db,"Owners",user.uid),{
-        email:user.email,
-        Username:username,
-      });  
-    }
-      console.log("User Registered Successfully");
-      alert("Thank You for using our Platform. You are successfully registered!");
+//   const handleRegister = async(e) => {
+//     e.preventDefault();
+//     try {
+//       await  createUserWithEmailAndPassword(auth,email,password);
+//       const user=auth.currentUser;
+//       console.log(user);
+//       if(user){
+//         await setDoc(doc(db,"Owners",user.uid),{
+//         email:user.email,
+//         Username:username,
+//       });  
+//     }
+//       console.log("User Registered Successfully");
+//       alert("Thank You for using our Platform. You are successfully registered!");
 
-    } catch (error) {
-        console.log(error.message);
-    }
-}
+//     } catch (error) {
+//         console.log(error.message);
+//     }
+// }
 
 
 
+//   const navigate = useNavigate();
+
+//   const navigateToOtherPage = () => {
+//     navigate('/ownerhomepage');
+//   };
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("");
   const navigate = useNavigate();
 
-  const navigateToOtherPage = () => {
-    navigate('/ownerhomepage');
-  };
+  const handleRegister = async (e) => {
+    e.preventDefault();
+    try {
+      await createUserWithEmailAndPassword(auth, email, password);
+      const user = auth.currentUser;
+      if (user) {
+        await setDoc(doc(db, "Owners", user.uid), {
+          email: user.email,
+          Username: username,
+        });
+      }
+      toast.success("Thank you for using our platform. You are successfully registered!");
+      setTimeout(() => {
+        navigate('/ownerhomepage');
+      }, 3000);
+    } catch (error) {
+      toast.error(error.message);
+    }
+  }
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-gray-100 bg-[url('signupbg.png')] bg-cover bg-no-repeat p-4">
+      <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
     <div className="bg-white bg-opacity-30 rounded-lg shadow-lg p-4 sm:p-6 md:p-8 lg:p-12 w-full max-w-4xl flex flex-col lg:flex-row items-center">
       {/* SVG and Welcome Text Container */}
       <div className="w-full lg:w-1/2 mb-6 lg:mb-0 lg:pr-8">
@@ -71,7 +99,7 @@ const PremuimSignup = () => {
         <form onSubmit={handleRegister} method="POST" className="space-y-4">
           <div>
             <label htmlFor="username" className="block text-sm font-medium text-gray-700">
-              Username
+              Restaurant Name
             </label>
             <input
               type="text"
