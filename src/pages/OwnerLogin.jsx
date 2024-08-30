@@ -43,7 +43,14 @@ const OwnerLogin = () => {
   return (
     <>
     <ToastContainer />
-    <div className="flex min-h-screen items-center justify-center bg-gray-100 bg-[url('signupbg.png')] bg-cover bg-no-repeat p-4">
+    <div className="relative flex min-h-screen items-center justify-center bg-gray-100 p-4">
+  {/* Background Image */}
+  <img 
+    src="signupbg.png" 
+    alt="Background" 
+    className="absolute inset-0 w-full h-full object-cover z-0"
+  />
+  <div className="relative z-10">
     <div className="bg-white bg-opacity-30 rounded-lg shadow-lg p-4 sm:p-6 md:p-8 lg:p-12 w-full max-w-4xl flex flex-col lg:flex-row items-center">
       {/* SVG and Welcome Text Container */}
       <div className="w-full lg:w-1/2 mb-6 lg:mb-0 lg:pr-8">
@@ -106,6 +113,7 @@ const OwnerLogin = () => {
           </div>
         </form>
       </div>
+    </div>
     </div>
   </div>
   </>
