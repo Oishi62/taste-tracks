@@ -159,7 +159,14 @@ const WorkerLeftLayout = () => {
 
     <div className="flex items-center mt-5 w-full justify-center">
         <div className="w-64"> {/* Fixed width of 16rem */}
-        <div className="bg-gray-100 shadow-xl rounded-lg py-3 bg-[url('green.jpeg')] bg-cover bg-center bg-no-repeat">
+        <div className="relative bg-gray-100 shadow-xl rounded-lg py-3">
+  {/* Background Image */}
+  <img 
+    src="green.jpeg" 
+    alt="Background" 
+    className="absolute inset-0 w-full h-full object-cover rounded-lg"
+  />
+  <div className="relative z-10 p-4">
         <div className="p-2">
               <h3 className="text-center text-xl text-gray-900 font-medium leading-8">Discover Jobs</h3>
               
@@ -182,6 +189,7 @@ const WorkerLeftLayout = () => {
 </div>
 
               </div>
+            </div>
             </div>
           </div>
         </div>
