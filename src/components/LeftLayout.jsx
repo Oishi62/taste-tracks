@@ -170,39 +170,57 @@ const LeftLayout = () => {
       {/* Left Top Component */}
       <div className="flex items-center mt-5 w-full justify-center">
         <div className="w-64"> {/* Fixed width of 16rem */}
-          <div className="bg-gray-100 shadow-xl rounded-lg py-3  bg-[url('profile_bg1.jpeg')] bg-cover bg-no-repeat">
-          <div className="photo-wrapper p-2">
-              <br />
-              <img
-                className="w-20 h-20 rounded-full mx-auto object-cover"
-                src={userDetails?.photoURL || user_icon}
-                alt="Profile"
-              />
-            </div>
+        <div className="relative bg-gray-100 shadow-xl rounded-lg py-3">
+  {/* Background Image */}
+  <img 
+    src="profile_bg1.jpeg" 
+    alt="Profile Background" 
+    className="absolute inset-0 w-full h-full object-cover z-0 rounded-lg"
+  />
 
-            <div className="p-2">
-              {loading ? (
-                <p>Loading....</p>
-              ) : userDetails ? (
-                <>
-                  <h3 className="text-center text-xl text-gray-900 font-medium leading-8">
-                    {userDetails.displayName || userDetails.Username}
-                  </h3>
-                  <h5 className="text-center text-lg text-gray-900 font-medium leading-8">
-                    {userDetails.email}
-                  </h5>
-                </>
-              ) : (
-                <p>No user details available</p>
-              )}
-            </div>
-          </div>
+  <div className="relative z-10">
+    <div className="photo-wrapper p-2">
+      <br />
+      <img
+        className="w-20 h-20 rounded-full mx-auto object-cover"
+        src={userDetails?.photoURL || user_icon}
+        alt="Profile"
+      />
+    </div>
+
+    <div className="p-2">
+      {loading ? (
+        <p>Loading....</p>
+      ) : userDetails ? (
+        <>
+          <h3 className="text-center text-xl text-gray-900 font-medium leading-8">
+            {userDetails.displayName || userDetails.Username}
+          </h3>
+          <h5 className="text-center text-lg text-gray-900 font-medium leading-8">
+            {userDetails.email}
+          </h5>
+        </>
+      ) : (
+        <p>No user details available</p>
+      )}
+    </div>
+  </div>
+</div>
+
         </div>
       </div>
       {/* Lower Left Component */}
       <div className="flex items-center mt-5 w-full justify-center">
         <div className="w-64"> {/* Fixed width of 16rem */}
-          <div className="bg-gray-100 shadow-xl rounded-lg py-3 bg-[url('green.jpeg')] bg-cover bg-no-repeat">
+        <div className="relative bg-gray-100 shadow-xl rounded-lg py-3">
+  {/* Background Image */}
+  <img 
+    src="green.jpeg" 
+    alt="Background" 
+    className="absolute inset-0 w-full h-full object-cover z-0 rounded-lg"
+  />
+
+  <div className="relative z-10">
             <div className="p-2">
               <h3 className="text-center text-xl text-gray-900 font-medium leading-8">
                 Discover Restaurants
@@ -233,6 +251,7 @@ const LeftLayout = () => {
             </div>
           </div>
         </div>
+      </div>
       </div>
     </>
   );
