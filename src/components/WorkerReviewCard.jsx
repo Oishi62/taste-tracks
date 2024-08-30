@@ -33,7 +33,7 @@ const WorkerReviewCard = ({ name, location, review, timestamp, images}) => {
   <img 
     src="post_heading.jpeg" 
     alt="Background" 
-    className="absolute inset-0 w-full h-full object-cover z-0 rounded-lg"
+    className="absolute inset-0 w-full h-full object-cover z-0"
   />
   <div className="relative z-10">
           <div className="p-4">

@@ -80,7 +80,7 @@ const WorkerNavbar = ({ onSearch }) => {
                 </div>
               </div>
             </div>
-            <div className="relative z-10 flex items-center lg:hidden">
+            {/* <div className="relative z-10 flex items-center lg:hidden">
               <button type="button" className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
                 <span className="absolute -inset-0.5"></span>
                 <span className="sr-only">Open menu</span>
@@ -93,7 +93,7 @@ const WorkerNavbar = ({ onSearch }) => {
                   <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
-            </div>
+            </div> */}
             <div className="hidden lg:relative lg:z-10 lg:ml-4 lg:flex lg:items-center">
               <img className="w-12 h-12 rounded-full" src={userDetails?.photoURL || user_icon} alt="Profile" />
             </div>
