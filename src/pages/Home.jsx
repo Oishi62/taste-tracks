@@ -79,7 +79,15 @@ const Home = () => {
     <>
       <section className="bg-green-200 text-black-100 min-h-screen flex items-center justify-center px-4 py-8">
         <div className="container mx-auto">
-          <div className="flex flex-col justify-center p-8 sm:p-12 bg-[image:url('bgimage.png')] bg-no-repeat bg-cover bg-center bg-opacity-75 rounded-lg shadow-lg w-full max-w-6xl mx-auto min-h-[90vh]">
+          {/* <div className="flex flex-col justify-center p-8 sm:p-12 bg-[image:url('bgimage.png')] bg-no-repeat bg-cover bg-center bg-opacity-75 rounded-lg shadow-lg w-full max-w-6xl mx-auto min-h-[90vh]"> */}
+          <div className="flex flex-col justify-center p-8 sm:p-12 bg-no-repeat bg-cover bg-center bg-opacity-75 rounded-lg shadow-lg w-full max-w-6xl mx-auto min-h-[90vh] relative">
+      <img 
+    src="bgimage.png" 
+    alt="Background" 
+    className="absolute inset-0 w-full h-full object-cover rounded-lg opacity-75 z-0"
+  />
+  <div className="relative z-10">
+
             <div className="text-center lg:text-left mb-12 lg:mb-24">
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight">
                 <span className="text-green-900">TasteTracks</span>
@@ -94,8 +102,10 @@ const Home = () => {
                 </a>
               </div>
             </div>
+            </div>
+            </div>
           </div>
-        </div>
+        {/* </div> */}
       </section>
     </>
   );
