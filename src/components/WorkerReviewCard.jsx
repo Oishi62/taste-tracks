@@ -28,7 +28,14 @@ const WorkerReviewCard = ({ name, location, review, timestamp, images}) => {
       <div className="bg-gray-100 w-full rounded-lg shadow-md flex flex-col transition-all overflow-hidden hover:shadow-2xl">
         
         {/* Top section with background color */}
-        <div className="bg-[url('post_heading.jpeg')] bg-cover bg-no-repeat">
+        <div className="relative">
+  {/* Background Image */}
+  <img 
+    src="post_heading.jpeg" 
+    alt="Background" 
+    className="absolute inset-0 w-full h-full object-cover z-0 rounded-lg"
+  />
+  <div className="relative z-10">
           <div className="p-4">
             <div className="pb-3 text-xs font-medium flex justify-between text-blue-900">
               <span className="flex items-center gap-1">
@@ -44,6 +51,7 @@ const WorkerReviewCard = ({ name, location, review, timestamp, images}) => {
                   </svg> */}
                 </a>
               </span>
+            </div>
             </div>
           </div>
         </div>
