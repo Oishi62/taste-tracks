@@ -5,7 +5,15 @@ const RightLayout = () => {
     <>
     <div className="flex items-center mt-5 w-full justify-center">
         <div className="w-64"> {/* Fixed width of 16rem */}
-          <div className="bg-[url('Wallpaper_rightlayout.jpeg')] bg-cover bg-no-repeat bg-center shadow-xl rounded-lg py-3">
+        <div className="relative shadow-xl rounded-lg py-3">
+  {/* Background Image */}
+  <img 
+    src="Wallpaper_rightlayout.jpeg" 
+    alt="Background" 
+    className="absolute inset-0 w-full h-full object-cover z-0 rounded-lg"
+  />
+
+  <div className="relative z-10">
             
             <div className="p-2">
               <br />
@@ -13,9 +21,11 @@ const RightLayout = () => {
               <p className='text-center	'>Download straight from the github repository, scan now to know more.</p>
               <img src="github.png" alt="Error" />
             </div>
+            </div>
+            </div>
           </div>
         </div>
-      </div>
+      
     
     </>
   )
