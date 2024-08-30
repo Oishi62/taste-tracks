@@ -67,8 +67,8 @@ const OwnerHomePage = () => {
         <img className="object-cover object-center rounded-xl w-full h-32" alt="hero" src="brand_1.png"/>
         <img className="object-cover object-center rounded-xl w-full h-32" alt="hero" src="Brand_8.jpeg"/>
         <img className="object-cover object-center rounded-xl w-full h-32" alt="hero" src="Brand_6.jfif"/>
-        <img className="object-cover object-center rounded-xl w-full h-32" alt="hero" src="Brand_7.png"/>
-        <img className="object-cover object-center rounded-xl w-full h-32" alt="hero" src="Brand_2.jpeg"/>
+        {/* <img className="object-cover object-center rounded-xl w-full h-32" alt="hero" src="Brand_7.png"/>
+        <img className="object-cover object-center rounded-xl w-full h-32" alt="hero" src="Brand_2.jpeg"/> */}
       </div>
     </div>
   </div>
@@ -139,7 +139,7 @@ const OwnerHomePage = () => {
       </div>
 
       <div className="hidden lg:flex lg:items-center lg:w-1/2 lg:justify-center">
-        <img className="w-full max-w-md h-auto object-cover rounded-full" src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=755&q=80" alt=""/>
+        <img className="w-full max-w-md h-auto object-cover rounded-3xl" src="Firefly.jpg" alt=""/>
       </div>
     </div>
   </div>
