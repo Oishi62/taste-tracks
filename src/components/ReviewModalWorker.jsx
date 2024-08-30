@@ -72,11 +72,7 @@ const ReviewModalWorker = ({ isVisible, onClose }) => {
         e.preventDefault();
 
         let userId;
-        try {
-            userId = auth.currentUser.uid;
-            const userDocRef = doc(db, 'workerreviews', userId);
-
-            const imageUrls = await uploadImagesToStorage(userId);
+        const imageUrls = await uploadImagesToStorage(userId);
 
             const newReview = {
                 name,
@@ -85,6 +81,11 @@ const ReviewModalWorker = ({ isVisible, onClose }) => {
                 images: imageUrls,
                 timestamp: new Date()
             };
+        try {
+            userId = auth.currentUser.uid;
+            const userDocRef = doc(db, 'workerreviews', userId);
+
+            
 
             await updateDoc(userDocRef, {
                 reviews: arrayUnion(newReview)
