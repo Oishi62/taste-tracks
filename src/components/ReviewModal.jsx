@@ -78,20 +78,22 @@ const ReviewModal = ({ isVisible, onClose }) => {
         e.preventDefault();
 
         let userId;
+        const imageUrls = await uploadImagesToStorage(userId);
+        const newReview = {
+            name,
+            review,
+            location,
+            likes,
+            images: imageUrls,
+            timestamp: new Date()
+        };
         try {
             userId = auth.currentUser.uid;
             const userDocRef = doc(db, 'customerreviews', userId);
 
-            const imageUrls = await uploadImagesToStorage(userId);
+            
 
-            const newReview = {
-                name,
-                review,
-                location,
-                likes,
-                images: imageUrls,
-                timestamp: new Date()
-            };
+            
 
             await updateDoc(userDocRef, {
                 reviews: arrayUnion(newReview)
