@@ -39,6 +39,9 @@ export default {
         'custom-light-green': '#cdffcd',
         'custom-dark-green': '#91ee91',
       },
+      backgroundImage: {
+        'custom-bg': "url('bgimage.png')",
+      }
     },
   },
   plugins: [],
